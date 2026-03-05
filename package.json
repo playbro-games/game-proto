@@ -21,7 +21,6 @@
 		"test": "echo tests completed"
 	},
 	"dependencies": {},
-	"packageManager": "pnpm@10.12.1",
 	"devDependencies": {
 		"@bufbuild/buf": "^1.66.0",
 		"@bufbuild/protoc-gen-es": "^2.11.0",
@@ -34,5 +33,9 @@
 	},
 	"peerDependencies": {
 		"@bufbuild/protobuf": "^2.11.0"
-	}
+	},
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com"
+	},
+	"packageManager": "pnpm@10.12.1"
 }
