@@ -6,6 +6,9 @@ on:
       - main
       - 'release/**'
 
+env:
+  GITHUB_AUTH_TOKEN: ${{ secrets.PACKAGES_TOKEN }}
+
 jobs:
   test:
     if: startsWith(github.head_ref, 'release-please--')
