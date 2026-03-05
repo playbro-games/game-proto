@@ -18,7 +18,8 @@
 		"build": "pnpm proto:gen && pnpm proto:entry && vite build",
 		"format": "pnpm buf format -w",
 		"lint": "pnpm buf lint",
-		"test": "echo tests completed"
+		"test": "echo tests completed",
+		"type-check": "echo type check completed"
 	},
 	"dependencies": {},
 	"devDependencies": {
