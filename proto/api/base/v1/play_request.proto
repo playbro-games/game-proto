@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package api.base.v1;
+
+import "common/v1/action.proto";
+import "common/v1/command_type.proto";
+
+// API request for playing a game session
+message PlayRequest {
+  // command specifies the type of action being requested, which in this case is PLAY.
+  common.v1.CommandType command = 1;
+
+  // action contains the details of the player's action, such as the bet amount, selected paylines, or any special features activated during the spin. This information is crucial for processing the game logic and determining the outcome of the spin.
+  common.v1.Action action = 2;
+
+  // session_id is a unique identifier for the game session, which can be used for tracking and managing the session.
+  string session_id = 3;
+
+  // sign_key is a key used for signing requests, ensuring the integrity and authenticity of the requests.
+  string sign_key = 4;
+
+  // gift_spin indicates whether the current spin is a gift spin, which can be used to trigger special game mechanics or rewards associated with gift spins.
+  bool gift_spin = 5;
+
+  // quick_spin indicates whether the player has enabled the quick spin feature, which allows for faster gameplay by reducing animations and delays between spins. This can enhance the gaming experience for players who prefer a more rapid pace.
+  bool quick_spin = 6;
+
+  // set_denominator is used to adjust the bet amount or payout calculations based on a specific denominator value. This can be useful for implementing features like bet scaling, where the player's bet is divided by a certain factor to allow for smaller or larger bets without changing the underlying game mechanics.
+  int64 set_denominator = 7;
+}

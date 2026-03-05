@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package common.v1;
+
+// SymbolPayout defines the payout for a specific symbol based on the number of occurrences and any associated multipliers or free spins.
+message SymbolPayout {
+  // type is a string that categorizes the payout, such as "line_win", "scatter_win", or "bonus_win". This can help the client understand the context of the payout and display it appropriately.
+  string type = 1;
+
+  // multiplier is a double that represents the payout multiplier for the symbol combination. For example, if the base bet is 1 unit and the multiplier is 5, the payout would be 5 units.
+  double multiplier = 2;
+
+  // occurrences is an integer that indicates how many times the symbol appears in the winning combination. This can be used to determine the payout based on the paytable.
+  // int32 occurrences = 3;
+
+  // freespins is an optional integer that specifies the number of free spins awarded for this symbol combination, if applicable. This is relevant for symbols that trigger free spin bonuses.
+  optional int32 freespins = 4;
+
+  // trigger is an optional string that provides additional information about what triggered the payout, such as "line_win", "scatter_win", or "bonus_win". This can help the client understand the context of the payout and display it appropriately.
+  optional string trigger = 5;
+}

@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package api.base.v1;
+
+import "common/v1/command_type.proto";
+
+// API request for starting a game session
+message StartRequest {
+  // command specifies the type of action being requested, which in this case is START.
+  common.v1.CommandType command = 1;
+
+  // game_name specifies the name of the game for which the session is being started, allowing the server to initialize the appropriate game environment and settings.
+  string game_name = 2;
+
+  // session_id is a unique identifier for the game session, which can be used for tracking and managing the session.
+  string session_id = 3;
+
+  // sign_key is a key used for signing requests, ensuring the integrity and authenticity of the requests.
+  string sign_key = 4;
+}

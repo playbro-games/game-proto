@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package api.base.v1;
+
+import "common/v1/command_type.proto";
+
+// API request for synchronizing a game session
+message SyncRequest {
+  // command specifies the type of action being requested, which in this case is SYNC.
+  common.v1.CommandType command = 1;
+
+  // session_id is a unique identifier for the game session, which can be used for tracking and managing the session.
+  string session_id = 2;
+
+  // sign_key is a key used for signing requests, ensuring the integrity and authenticity of the requests.
+  string sign_key = 3;
+}

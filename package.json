@@ -1,0 +1,38 @@
+{
+	"name": "@playbro-games/game-proto",
+	"version": "0.0.1",
+	"type": "module",
+	"files": [
+		"/dist"
+	],
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	".": {
+		"import": "./dist/index.js",
+		"types": "./dist/index.d.ts"
+	},
+	"scripts": {
+		"clean": "rm -rf src",
+		"proto:gen": "pnpm clean && buf generate",
+		"proto:entry": "tsx scripts/gen-entry.ts",
+		"build": "pnpm proto:gen && pnpm proto:entry && vite build",
+		"format": "pnpm buf format -w",
+		"lint": "pnpm buf lint",
+		"test": "echo tests completed"
+	},
+	"dependencies": {},
+	"packageManager": "pnpm@10.12.1",
+	"devDependencies": {
+		"@bufbuild/buf": "^1.66.0",
+		"@bufbuild/protoc-gen-es": "^2.11.0",
+		"@types/node": "22.17.1",
+		"fast-glob": "^3.3.3",
+		"tsx": "^4.21.0",
+		"typescript": "^5.9.3",
+		"vite": "^7.3.1",
+		"vite-plugin-dts": "^4.5.4"
+	},
+	"peerDependencies": {
+		"@bufbuild/protobuf": "^2.11.0"
+	}
+}

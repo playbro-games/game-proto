@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package common.v1;
+
+// ActionParams defines the parameters for a player's action, including the bet amount per line and the number of lines being played, which are essential for processing the player's action in the game.
+message ActionParams {
+  int64 bet_per_line = 1;
+
+  int64 lines = 2;
+}
+
+// Action represents a player's action in the game, including the name of the action and its associated parameters.
+message Action {
+  // name specifies the type of action being performed by the player, such as "spin", "bet", or "collect", allowing the server to process the action accordingly.
+  string name = 1;
+
+  // params contains the parameters associated with the action, such as bet amount and number of lines, which provide the necessary details for executing the action in the game.
+  ActionParams params = 2;
+}

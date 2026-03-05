@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package common.v1;
+
+// User represents a user in the system with a balance and currency.
+message User {
+  // balance is the amount of money the user has, represented in the smallest currency unit (e.g., cents).
+  int64 balance = 1;
+
+  // currency is the currency of the user's balance, represented as a string (e.g., "USD", "EUR").
+  string currency = 2;
+}

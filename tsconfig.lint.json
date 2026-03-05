@@ -1,0 +1,26 @@
+{
+	"include": ["."],
+	"exclude": ["node_modules", "dist"],
+	"compilerOptions": {
+		"lib": ["DOM", "ESNext"],
+		"jsx": "preserve",
+		"target": "es2024",
+		"noEmit": true,
+		"skipLibCheck": true,
+		"jsxImportSource": "solid-js",
+		"useDefineForClassFields": true,
+
+		/* modules */
+		"module": "ESNext",
+		"verbatimModuleSyntax": true,
+		"resolveJsonModule": true,
+		"moduleResolution": "bundler",
+		"allowImportingTsExtensions": true,
+
+		/* type checking */
+		"strict": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noUncheckedIndexedAccess": true
+	}
+}

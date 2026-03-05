@@ -1,0 +1,5 @@
+syntax = "proto3";
+
+package domain.v1;
+
+message Context {}

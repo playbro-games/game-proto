@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package domain.v1;
+
+import "common/v1/buy_freespin.proto";
+import "common/v1/currency.proto";
+import "common/v1/symbol_payout.proto";
+import "google/protobuf/any.proto";
+
+// SymbolPayoutData represents the payout information for a specific symbol, including the list of payouts for different combinations of that symbol on the reels.
+message SymbolPayoutData {
+  // payouts is a list of SymbolPayout messages that define the payout amounts for different combinations of the symbol on the reels. Each SymbolPayout includes the multiplier, occurrences, and any free spins awarded for that combination.
+  repeated common.v1.SymbolPayout payouts = 1;
+}
+
+// Settings represents the game settings, including bet options, paytable, and other configurations needed to start the game.
+message Settings {
+  // bet_per_spin is the base bet amount for each spin, represented in the smallest currency unit (e.g., cents).
+  int64 bet_per_spin = 1;
+
+  // bet_factor is a list of multipliers that can be applied to the base bet amount, allowing for different betting options (e.g., 1x, 2x, 5x).
+  repeated int64 bet_factor = 2;
+
+  // bets is a list of pre-calculated bet amounts for each bet factor, which can be used by the client to display betting options without needing to calculate them on the fly.
+  repeated int64 bets = 3;
+
+  // currency_format defines the format in which the currency is displayed, including symbol, decimal places, and thousand separators.
+  common.v1.CurrencyFormat currency_format = 4;
+
+  // paytable is a mapping of symbol IDs to their corresponding payout lists, which define the payouts for different combinations of symbols on the reels.
+  google.protobuf.Any paytable = 5;
+
+  // buy_freespin contains the configuration for purchasing free spins, if available.
+  optional common.v1.BuyFreespin buy_freespin = 6;
+}

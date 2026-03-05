@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package api.base.v1;
+
+import "common/v1/user.proto";
+import "google/protobuf/any.proto";
+
+// API responses for game actions (start, spin, sync, error)
+message PlayResponse {
+  // user contains the details of the logged-in user, including balance and currency.
+  common.v1.User user = 1;
+
+  // context contains the current game context, which may include information about the current state of the game, active bonuses, or other relevant data needed for the client to properly initialize the game session.
+  google.protobuf.Any context = 2;
+}

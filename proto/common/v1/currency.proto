@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package common.v1;
+
+// CurrencyFormat defines how the currency should be displayed in the game, including the style of the currency symbol and the overall formatting style (e.g., for real money, fun money, or cryptocurrency).
+enum CurrencyType {
+  // CURRENCY_TYPE_UNKNOWN_UNSPECIFIED is the default value for CurrencyType, indicating that the currency type is not specified or recognized, and the game should use a default display format for the currency.
+  CURRENCY_TYPE_UNKNOWN_UNSPECIFIED = 0;
+
+  // CURRENCY_TYPE_SYMBOL indicates that the currency should be displayed using its symbol (e.g., "$" for USD, "€" for EUR).
+  CURRENCY_TYPE_SYMBOL = 1;
+
+  // CURRENCY_TYPE_CODE indicates that the currency should be displayed using its code (e.g., "USD", "EUR").
+  CURRENCY_TYPE_CODE = 2;
+
+  // CURRENCY_TYPE_HIDDEN indicates that the currency should not be displayed at all, and only the amount should be shown without any currency symbol or code.
+  CURRENCY_TYPE_HIDDEN = 3;
+}
+
+// CurrencyStyle defines the overall style of the currency display, which can be used to differentiate between real money, fun money, and cryptocurrency in the game.
+enum CurrencyStyle {
+  // CURRENCY_STYLE_UNKNOWN_UNSPECIFIED is the default value for CurrencyStyle, indicating that the currency style is not specified or recognized, and the game should use a default formatting style for the currency.
+  CURRENCY_STYLE_UNKNOWN_UNSPECIFIED = 0;
+
+  // CURRENCY_STYLE_MONEY indicates that the currency is real money, which may require special handling for regulatory compliance and responsible gaming features.
+  CURRENCY_STYLE_MONEY = 1;
+
+  // CURRENCY_STYLE_FUN indicates that the currency is fun money, which is used for entertainment purposes and does not have real-world value.
+  CURRENCY_STYLE_FUN = 2;
+
+  // CURRENCY_STYLE_CRYPTO indicates that the currency is cryptocurrency, which may require special handling for wallet integration and blockchain transactions.
+  CURRENCY_STYLE_CRYPTO = 3;
+}
+
+//! Вместо string лучше использовать enum для определения допустимых значений, чтобы обеспечить строгую типизацию и избежать ошибок при передаче данных
+
+// CurrencyFormat defines how the currency should be displayed in the game, including the style of the currency symbol and the overall formatting style (e.g., for real money, fun money, or cryptocurrency).
+message CurrencyFormat {
+  // Допустимые значения: "", "symbol", "code", "hidden"
+  string currency_style = 1;
+
+  // Допустимые значения: "money", "fun", "crypto"
+  string style = 2;
+}

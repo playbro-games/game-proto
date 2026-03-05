@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package common.v1;
+
+// BuyFreespin represents the option for players to purchase free spins in a game, including whether the option is active and the bet multiplier applied to the free spins.
+message BuyFreespin {
+  // active indicates whether the option to buy free spins is currently available in the game.
+  bool active = 1;
+
+  // bet_multiplier is the multiplier applied to the base bet amount for the free spins, which determines the cost of purchasing free spins and the potential winnings from those spins.
+  int64 bet_multiplier = 2;
+}

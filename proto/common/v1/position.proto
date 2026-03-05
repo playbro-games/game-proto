@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package common.v1;
+
+// The Position parameter is the coordinates on the game board, with the x and y values ​​indicating the position in the column and row, respectively.
+message Position {
+  // x is the index of the reel on the game field, starting with 0 for the leftmost column.
+  int32 x = 1;
+
+  // y is the index of the row on the game field, starting with 0 for the topmost row.
+  int32 y = 2;
+}

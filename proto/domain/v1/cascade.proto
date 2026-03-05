@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package domain.v1;
+
+import "common/v1/cluster.proto";
+import "common/v1/position.proto";
+
+// Context represents the current state of the game, which may include information about the current board layout, active bonuses, or other relevant data needed for the client to properly manage the game session.
+message Cascade {
+  // symbol ids is a list of symbol identifiers that are part of the cascade, which can be used to determine the symbols involved in the winning combination and calculate payouts accordingly.
+  repeated int32 symbols = 1;
+
+  // cluster is a list of clusters that represent groups of matching symbols on the game board, which can lead to wins. Each cluster contains information about the symbol, the payout amount, the count of symbols in the cluster, and their positions on the board.
+  repeated common.v1.Cluster cluster = 2;
+
+  // unlocked_cells is a list of positions on the game board that have been unlocked as a result of the cascade. Each position indicates a specific cell that is now available for interaction or further gameplay actions.
+  repeated common.v1.Position unlocked_cells = 3;
+}

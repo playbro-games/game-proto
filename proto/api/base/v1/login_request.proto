@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package api.base.v1;
+
+import "common/v1/command_type.proto";
+
+// API request for login action
+message LoginRequest {
+  // command specifies the type of action being requested, which in this case is LOGIN.
+  common.v1.CommandType command = 1;
+
+  // game_name specifies the name of the game the user wants to play, which can be used to customize the login response based on the game's requirements.
+  string game_name = 2;
+
+  // token is a unique identifier for the user, which can be used for authentication and session management.
+  string token = 3;
+
+  // language specifies the preferred language for the user interface and messages.
+  string language = 4;
+}

@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package api.base.v1;
+
+import "common/v1/user.proto";
+
+// API response for login action
+message LoginResponse {
+  // user contains the details of the logged-in user.
+  common.v1.User user = 1;
+
+  // sign_key is a unique key used for signing requests, ensuring secure communication between the client and server.
+  string sign_key = 2;
+}

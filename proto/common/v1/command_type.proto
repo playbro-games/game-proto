@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package common.v1;
+
+// Command enum defines the type of action being requested by the client, such as LOGIN, START, READY, SYNC, or PLAY.
+enum CommandType {
+  // UNKNOWN is the default value for CommandType, indicating that the command type is not specified or recognized.
+  COMMAND_TYPE_UNKNOWN_UNSPECIFIED = 0;
+
+  // SYNC indicates that the client is requesting to synchronize the game state with the server, which may involve updating the client's view of the game based on server-side changes or events.
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  // buf:lint:ignore ENUM_VALUE_UPPER_SNAKE_CASE
+  sync = 1;
+  // COMMAND_TYPE_SYNC = 1;
+
+  // LOGIN indicates that the client is requesting to log in to the game, which may involve authentication and session management.
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  // buf:lint:ignore ENUM_VALUE_UPPER_SNAKE_CASE
+  login = 2;
+  // COMMAND_TYPE_LOGIN = 2;
+
+  // START indicates that the client is requesting to start a new game session, which may involve initializing game state and resources.
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  // buf:lint:ignore ENUM_VALUE_UPPER_SNAKE_CASE
+  start = 3;
+  // COMMAND_TYPE_START = 3;
+
+  // PLAY indicates that the client is requesting to perform an action in the game, such as making a move or taking a turn, which may involve processing the client's input and updating the game state accordingly.
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  // buf:lint:ignore ENUM_VALUE_UPPER_SNAKE_CASE
+  play = 4;
+  // COMMAND_TYPE_PLAY = 4;
+
+  // READY indicates that the client is ready to receive game updates and interact with the game, which may involve synchronizing game state and preparing for gameplay.
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  // buf:lint:ignore ENUM_VALUE_UPPER_SNAKE_CASE
+  ready = 5;
+  // COMMAND_TYPE_READY = 5;
+}

@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package common.v1;
+
+// Cluster represents a group of matching symbols on the game board, which can lead to a win.
+message Cluster {
+  // symbol is the identifier of the symbol that forms the cluster (e.g., a specific candy or gem).
+  int32 symbol = 1;
+
+  // amount is the total payout amount for this cluster, calculated based on the symbol, the number of occurrences, and any applicable multipliers.
+  double amount = 2;
+
+  // count is the number of symbols in the cluster, which can affect the payout according to the game's paytable.
+  int64 count = 3;
+
+  // positions is a list of positions on the game board where the symbols in the cluster are located. Each position can be represented as an integer index or a coordinate pair, depending on the game's board layout.
+  repeated int32 positions = 4;
+}
