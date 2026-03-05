@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package api.base.v1;
+
+import "common/v1/user.proto";
+import "google/protobuf/struct.proto";
+
+// API responses for game actions (start, spin, sync, error)
+message SyncResponse {
+  // user contains the details of the logged-in user, including balance and currency.
+  common.v1.User user = 1;
+
+  // TODO: описать
+  // gift_spin contains the details of the gift spin, which may include information about the type of gift spin, any special features or bonuses associated with it, and other relevant data needed for the client to properly handle the gift spin mechanics in the game.
+  google.protobuf.Struct gift_spin = 2;
+}

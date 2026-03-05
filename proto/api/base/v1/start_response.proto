@@ -4,7 +4,7 @@ package api.base.v1;
 
 import "common/v1/user.proto";
 import "domain/v1/settings.proto";
-import "google/protobuf/any.proto";
+import "google/protobuf/struct.proto";
 
 // API responses for game actions (start, spin, sync, error)
 message StartResponse {
@@ -12,7 +12,7 @@ message StartResponse {
   common.v1.User user = 1;
 
   // context contains the current game context, which may include information about the current state of the game, active bonuses, or other relevant data needed for the client to properly initialize the game session.
-  google.protobuf.Any context = 2;
+  google.protobuf.Struct context = 2;
 
   // settings contains the game settings, such as bet options, paytable, and other configurations needed to start the game.
   domain.v1.Settings settings = 3;
