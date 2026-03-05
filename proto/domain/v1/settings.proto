@@ -5,7 +5,7 @@ package domain.v1;
 import "common/v1/buy_freespin.proto";
 import "common/v1/currency.proto";
 import "common/v1/symbol_payout.proto";
-import "google/protobuf/any.proto";
+import "google/protobuf/struct.proto";
 
 // SymbolPayoutData represents the payout information for a specific symbol, including the list of payouts for different combinations of that symbol on the reels.
 message SymbolPayoutData {
@@ -28,7 +28,7 @@ message Settings {
   common.v1.CurrencyFormat currency_format = 4;
 
   // paytable is a mapping of symbol IDs to their corresponding payout lists, which define the payouts for different combinations of symbols on the reels.
-  google.protobuf.Any paytable = 5;
+  google.protobuf.Struct paytable = 5;
 
   // buy_freespin contains the configuration for purchasing free spins, if available.
   optional common.v1.BuyFreespin buy_freespin = 6;

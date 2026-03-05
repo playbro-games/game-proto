@@ -26,5 +26,5 @@ message PlayRequest {
   bool quick_spin = 6;
 
   // set_denominator is used to adjust the bet amount or payout calculations based on a specific denominator value. This can be useful for implementing features like bet scaling, where the player's bet is divided by a certain factor to allow for smaller or larger bets without changing the underlying game mechanics.
-  int64 set_denominator = 7;
+  int32 set_denominator = 7;
 }
