@@ -9,6 +9,9 @@ on:
     paths:
       - 'pnpm-lock.yaml'
 
+env:
+  GITHUB_AUTH_TOKEN: ${{ secrets.PACKAGES_TOKEN }}
+
 jobs:
   create-cache:
     runs-on: ubuntu-latest
