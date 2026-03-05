@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.0.2](https://github.com/playbro-games/game-proto/compare/v0.0.1...v0.0.2) (2026-03-05)
+
+
+### Bug Fixes
+
+* api changed ([540a36b](https://github.com/playbro-games/game-proto/commit/540a36b7992200300fc8bffb6a40b2d3a2f8bd7f))
+* api changed ([212adab](https://github.com/playbro-games/game-proto/commit/212adab5580105eb03efa2a7ad363e063efa495b))
+
 ## 0.0.1 (2026-03-05)
 
 
