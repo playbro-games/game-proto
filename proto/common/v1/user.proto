@@ -7,6 +7,9 @@ message User {
   // balance is the amount of money the user has, represented in the smallest currency unit (e.g., cents).
   int64 balance = 1;
 
+  // currency_code is a currency code representing the user's ISO 4217 currency (e.g. "USD", "EUR") or virtual currency (e.g. "mBTC")
+  string currency_code = 2;
+
   // currency is the currency of the user's balance, represented as a string (e.g., "USD", "EUR").
-  string currency = 2;
+  string currency = 3;
 }
