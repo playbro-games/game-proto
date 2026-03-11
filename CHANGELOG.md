@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.0.3](https://github.com/playbro-games/game-proto/compare/v0.0.2...v0.0.3) (2026-03-06)
+
+
+### Bug Fixes
+
+* currency code added ([51e3a58](https://github.com/playbro-games/game-proto/commit/51e3a581f73fe11ac83e6e8bd07a6b3dd9bfaf42))
+* currency code added ([ebb4167](https://github.com/playbro-games/game-proto/commit/ebb4167b07b7aa690d88d9fe60aab4d0d5ae275f))
+
 ## [0.0.2](https://github.com/playbro-games/game-proto/compare/v0.0.1...v0.0.2) (2026-03-05)
 
 
