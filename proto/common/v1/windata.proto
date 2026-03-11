@@ -23,8 +23,8 @@ message WinData {
   int64 amount = 2;
 
   // positions is a list of positions on the game board where the winning symbols are located, which can be used to visually highlight the winning combination and enhance the player's gaming experience.
-  // В настоящее время позиции передаются в виде картежа из двух чисел: reel и row
-  repeated common.v1.Position positions = 3;
+  // В настоящее время позиции передаются в виде кортежа из двух чисел: reel и row
+  repeated Position positions = 3;
 
   // line is an optional field that indicates the specific payline on which the win occurred, which can be used to provide additional context about the winning combination and its payout structure.
   optional int32 line = 4;
