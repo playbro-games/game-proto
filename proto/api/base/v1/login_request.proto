@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package api.base.v1;
 
-import "game-proto/proto/common/v1/command_type.proto";
+import "common/v1/command_type.proto";
 
 // API request for login action
 message LoginRequest {

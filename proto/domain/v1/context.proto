@@ -2,29 +2,33 @@ syntax = "proto3";
 
 package domain.v1;
 
-import "game-proto/proto/common/v1/giftspin.proto";
-import "game-proto/proto/common/v1/spins.proto";
-import "game-proto/proto/common/v1/freespins.proto";
+import "common/v1/giftspin.proto";
+import "domain/v1/freespins.proto";
+import "domain/v1/spins.proto";
 
 // Context represents the overall state of the current game session.
-// Including available player actions, the current game mode, and detailed information about 
+// Including available player actions, the current game mode, and detailed information about
 // the main game spins, free spins, and any gift spins that may be active.
 message Context {
-    // actions is an array that typically contains one or more action names representing the next possible actions the client can perform. 
-    // For example, "spin" indicates that the frontend can proceed with a spin action. 
-    // This field guides the frontend about what operations are currently available in the game state.
-    repeated string actions = 1;
-    // current represents the current game mode or state that the player is in (e.g., "spins", "freespins", "bonus"). 
-    // NOTE: Future refactoring should consider renaming this field to "current_mode" for better clarity and consistency.
-    string current = 2;
-    // gift_spin contains information about any active gift spin offers provided to the player. 
-    // If this field is populated, it indicates that the player has been given free spins as a promotional offer 
-    // and should begin playing through those spins.
-    common.v1.GiftSpin gift_spin = 3;
-    // spins contains the complete context for the main game, including bet amount, winnings, win lines, board state, 
-    // and any cascade mechanics that have occurred during the main game session.
-    common.v1.Spins spins = 4;
-    // freespins contains the complete context for the free spins bonus round, including the number of spins remaining, 
-    // global multipliers, win information, board state, and cascade mechanics specific to the free spins mode.
-    common.v1.Freespins freespins = 5;
+  // actions is an array that typically contains one or more action names representing the next possible actions the client can perform.
+  // For example, "spin" indicates that the frontend can proceed with a spin action.
+  // This field guides the frontend about what operations are currently available in the game state.
+  repeated string actions = 1;
+
+  // current represents the current game mode or state that the player is in (e.g., "spins", "freespins", "bonus").
+  // NOTE: Future refactoring should consider renaming this field to "current_mode" for better clarity and consistency.
+  string current = 2;
+
+  // gift_spin contains information about any active gift spin offers provided to the player.
+  // If this field is populated, it indicates that the player has been given free spins as a promotional offer
+  // and should begin playing through those spins.
+  common.v1.GiftSpin gift_spin = 3;
+
+  // spins contains the complete context for the main game, including bet amount, winnings, win lines, board state,
+  // and any cascade mechanics that have occurred during the main game session.
+  domain.v1.Spins spins = 4;
+
+  // freespins contains the complete context for the free spins bonus round, including the number of spins remaining,
+  // global multipliers, win information, board state, and cascade mechanics specific to the free spins mode.
+  domain.v1.Freespins freespins = 5;
 }

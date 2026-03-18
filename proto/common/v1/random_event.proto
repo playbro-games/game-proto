@@ -2,19 +2,21 @@ syntax = "proto3";
 
 package common.v1;
 
-import "position.proto";
+import "common/v1/position.proto";
 
-// RandomEvent describes a random in-game event that may occur during gameplay, 
-// such as special board transformations, modifier activations, or other probabilistic game mechanics. 
+// RandomEvent describes a random in-game event that may occur during gameplay,
+// such as special board transformations, modifier activations, or other probabilistic game mechanics.
 // This message captures the details of what happened and which board cells were affected.
 message RandomEvent {
-    // type specifies the category or identifier of the random event that occurred (e.g., "line", "boom", "selection"). 
-    // The specific values are unique to each individual game and define the special event behavior.
-    string type = 1;
-    // unlocked_cells is a list of previously blocked or locked board positions that have been unlocked as a result of this random event. 
-    // These cells now become available for gameplay interaction.
-    repeated Position unlocked_cells = 2;
-    // updated_positions is a list of all board positions that were affected or modified by this random event. 
-    // This includes positions where the event was triggered or where visual/state changes occurred.
-    repeated Position updated_positions = 3;
+  // type specifies the category or identifier of the random event that occurred (e.g., "line", "boom", "selection").
+  // The specific values are unique to each individual game and define the special event behavior.
+  string type = 1;
+
+  // unlocked_cells is a list of previously blocked or locked board positions that have been unlocked as a result of this random event.
+  // These cells now become available for gameplay interaction.
+  repeated Position unlocked_cells = 2;
+
+  // updated_positions is a list of all board positions that were affected or modified by this random event.
+  // This includes positions where the event was triggered or where visual/state changes occurred.
+  repeated Position updated_positions = 3;
 }
