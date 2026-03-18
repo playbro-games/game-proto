@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package api.base.v1;
 
-import "common/v1/user.proto";
+import "game-proto/proto/common/v1/user.proto";
 
 // API response for login action
 message LoginResponse {

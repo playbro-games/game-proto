@@ -2,8 +2,8 @@ syntax = "proto3";
 
 package api.base.v1;
 
-import "common/v1/user.proto";
-import "domain/v1/settings.proto";
+import "game-proto/proto/common/v1/user.proto";
+import "game-proto/proto/domain/v1/settings.proto";
 import "google/protobuf/struct.proto";
 
 // API responses for game actions (start, spin, sync, error)

@@ -22,8 +22,7 @@ message WinData {
   // amount is the total payout amount for the win, which can be used to calculate the player's winnings and update their balance accordingly.
   int64 amount = 2;
 
-  // positions is a list of positions on the game board where the winning symbols are located, which can be used to visually highlight the winning combination and enhance the player's gaming experience.
-  // В настоящее время позиции передаются в виде кортежа из двух чисел: reel и row
+  // positions is a list of board coordinates where the winning symbols are located. This allows the frontend to visually highlight and animate the winning combination to enhance player feedback and engagement. Positions are represented as coordinate pairs (x, y) where x is the reel index and y is the row position.
   repeated Position positions = 3;
 
   // line is an optional field that indicates the specific payline on which the win occurred, which can be used to provide additional context about the winning combination and its payout structure.
