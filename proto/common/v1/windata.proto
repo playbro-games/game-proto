@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package common.v1;
+
+import "common/v1/position.proto";
+
+/*
+   * WinData может быть использован для передачи информации о выигрыше в игровом процессе.
+
+   * В случае выигрыша по линиям, WinData может содержать информацию о символе, который принес выигрыш, сумме выигрыша, позициях на игровом поле, где были расположены выигрышные символы, а также о линии, на которой произошел выигрыш.
+   * В случае выигрыша по кластерной механике, WinData может содержать информацию о символе, который принес выигрыш, сумме выигрыша, позициях на игровом поле, где были расположены выигрышные символы, а также о том, что выигрыш произошел по кластеру.
+   * В случае выигрыша по бонусу, WinData может содержать информацию о символе, сумме выигрыша, позиции на игровом поле, а также какой бонус был активирован (например, фриспины) и сколько фриспинов было предоставлено игроку.
+   * Любой выигрыш может привести к триггеру максимального выигрыша (MAX_WIN), который может быть использован для определения, достиг ли игрок максимального возможного выигрыша в игре.
+
+   * Если в игре присутствует каскадная механика, информация о триггере бонусной игры должна содержаться в последнем элементе каскадов, после всех возможных событий.
+*/
+
+message WinData {
+  // symbol is a unique identifier for the symbol that contributed to the win, which can be used to determine the type of symbol and its associated payout value.
+  uint32 symbol = 1;
+
+  // amount is the total payout amount for the win, which can be used to calculate the player's winnings and update their balance accordingly.
+  int64 amount = 2;
+
+  // positions is a list of positions on the game board where the winning symbols are located, which can be used to visually highlight the winning combination and enhance the player's gaming experience.
+  // В настоящее время позиции передаются в виде кортежа из двух чисел: reel и row
+  repeated Position positions = 3;
+
+  // line is an optional field that indicates the specific payline on which the win occurred, which can be used to provide additional context about the winning combination and its payout structure.
+  optional int32 line = 4;
+
+  // The Trigger field is optional and specifies what event or condition will be triggered after this win, such as a bonus feature or a specific game state.
+  // example "freespins" or "MAX_WIN"
+  optional string trigger = 5;
+
+  // freespins is an optional field that indicates the number of free spins awarded as a result of the win, which can be used to enhance the player's gaming experience by providing additional opportunities to win without placing additional bets.
+  optional int32 freespins = 6;
+}
