@@ -32,13 +32,11 @@ enum CurrencyStyle {
   CURRENCY_STYLE_CRYPTO = 3;
 }
 
-//! Вместо string лучше использовать enum для определения допустимых значений, чтобы обеспечить строгую типизацию и избежать ошибок при передаче данных
-
-// CurrencyFormat defines how the currency should be displayed in the game, including the style of the currency symbol and the overall formatting style (e.g., for real money, fun money, or cryptocurrency).
+// CurrencyFormat defines how the currency should be displayed in the game, including the style of the currency symbol and the overall formatting style applied when rendering currency amounts to the player.
 message CurrencyFormat {
-  // Допустимые значения: "", "symbol", "code", "hidden"
+  // currency_style determines how the currency symbol or code is displayed. Acceptable values include: "" (no symbol), "symbol" (currency symbol like $ or €), "code" (currency code like USD or EUR), or "hidden" (currency information not displayed).
   string currency_style = 1;
 
-  // Допустимые значения: "money", "fun", "crypto"
+  // style determines the overall presentation style of the currency to match the game context. Acceptable values include: "money" (real currency formatting), "fun" (virtual/fun money formatting), or "crypto" (cryptocurrency formatting).
   string style = 2;
 }

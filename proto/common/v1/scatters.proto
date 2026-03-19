@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package common.v1;
+
+import "common/v1/position.proto";
+
+enum Trigger {
+  // awarding free spin rounds
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  // buf:lint:ignore ENUM_ZERO_VALUE_SUFFIX
+  FREESPINS = 0;
+
+  // adding extra free spins to an active free spins session
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  RETRIGGER_FREESPINS = 1;
+}
+
+// Scatters contains detailed information about scatter symbols that have appeared on the board, including their payout, triggered events, and positions.
+// Scatters typically trigger bonus features such as free spins and provide base payouts independent of payline requirements.
+message Scatters {
+  // symbol is the unique identifier for the scatter symbol type (e.g., 1).
+  // Each scatter symbol ID corresponds to a specific symbol in the game's paytable and visual assets.
+  uint32 symbol = 1;
+
+  // amount represents the immediate payout amount awarded for the scatter symbols that appeared on the board.
+  // This payout is typically based on the number of scatters and the current bet multiplied by the scatter payout multiplier.
+  int64 amount = 2;
+
+  // trigger specifies what bonus event or feature should be triggered as a result of these scatter symbols appearing.
+  // Common triggers include FREESPINS (awarding free spin rounds) or RETRIGGER_FREESPINS (adding extra free spins to an active free spins session).
+  Trigger trigger = 3;
+
+  // positions is a list of all board coordinates where the winning scatter symbols are located.
+  // This allows the frontend to visually highlight and animate the scatter symbols to enhance the player's experience.
+  repeated Position positions = 4;
+
+  // freespins is an optional field that specifies exactly how many free spins should be awarded or added to the player's account as a result of these scatter symbols.
+  // This value is only populated when the trigger indicates a free spins event.
+  optional int64 freespins = 5;
+}

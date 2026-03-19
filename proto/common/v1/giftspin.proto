@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package common.v1;
+
+// GiftSpin is used to communicate promotional gift spin information to the frontend.
+// This message contains statistics about a series of free promotional spins that have been awarded to the player.
+// If this field is null or absent in the response, the player has no active gift spins.
+message GiftSpin {
+  // bet represents the bet amount applied to each individual gift spin in the series.
+  // This is the amount wagered per spin during the gift spin session.
+  int64 bet = 1;
+
+  // total_bet represents the cumulative total wagered across all gift spins in the current series.
+  // This is calculated as the individual bet amount multiplied by the number of spins played.
+  int64 total_bet = 2;
+
+  // total_win represents the cumulative total winnings from all gift spins in the current series, allowing the player to see their total promotional winnings at a glance.
+  int64 total_win = 3;
+
+  // left indicates how many gift spins remain to be played before the promotional offer expires.
+  // When this value reaches zero, the gift spin feature is concluded.
+  int32 left = 4;
+
+  // total indicates the total number of gift spins that were awarded in the original promotional offer.
+  // This allows the frontend to display progress through the gift spin series.
+  int32 total = 5;
+
+  // status represents the current status of the gift spin offer (e.g., "pending", "active", "completed").
+  // This field helps the frontend determine the appropriate user interface state and presentation for the gift spins feature.
+  string status = 6;
+
+  // is_previous_gift is a boolean flag indicating whether the gift spin spins are from a previous session or carry-over.
+  // This helps the frontend distinguish between newly awarded gift spins and those remaining from prior sessions.
+  bool is_previous_gift = 7;
+}
