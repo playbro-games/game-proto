@@ -26,12 +26,17 @@ message Cascade {
   // These cells are temporarily unavailable for future interactions until they are explicitly unlocked or the game state changes.
   repeated common.v1.Position blocked_cells = 4;
 
+  // moved_blocked_cells is used to show the movement of blocked cells on the board, if any.
+  // It is a two-dimensional array of integers, where each subarray consists of 4 elements: 
+  // old column, old row, new column, new row: [old_column, old_row, new_column, new_row].
+  repeated common.v1.Position moved_blocked_cells = 5;
+
   // random_event contains information about whether a random event has occurred during the cascade.
   // This field holds details about special triggered events that can alter the game board state and affect subsequent gameplay mechanics.
-  common.v1.RandomEvent random_event = 5;
+  common.v1.RandomEvent random_event = 6;
 
   // scatters is a list of scatter symbols that have appeared on the board as a result of the cascade.
   // Each scatter entry contains information about the scatter symbol, the payout amount,
   // the trigger event (such as freespins), and the positions where the scatters are located.
-  repeated common.v1.Scatters scatters = 6;
+  repeated common.v1.Scatters scatters = 7;
 }
