@@ -30,11 +30,14 @@ message Scatters {
   // Common triggers include FREESPINS (awarding free spin rounds) or RETRIGGER_FREESPINS (adding extra free spins to an active free spins session).
   Trigger trigger = 3;
 
+  // occurrences shows the number of scatter symbols on the board that are part of a combination.
+  int64 occurrences = 4;
+
   // positions is a list of all board coordinates where the winning scatter symbols are located.
   // This allows the frontend to visually highlight and animate the scatter symbols to enhance the player's experience.
-  repeated Position positions = 4;
+  repeated Position positions = 5;
 
   // freespins is an optional field that specifies exactly how many free spins should be awarded or added to the player's account as a result of these scatter symbols.
   // This value is only populated when the trigger indicates a free spins event.
-  optional int64 freespins = 5;
+  optional int64 freespins = 6;
 }
