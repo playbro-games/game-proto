@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package common.v1;
+
+// BuyFeature represents a purchasable feature in the game, including its unique identifier, price, and optional name.
+message BuyFeature {
+  // Unique identifier for the feature
+  int32 id = 1;
+
+  // Price of the feature in the smallest currency unit (e.g., cents)
+  int32 price = 2;
+
+  // Name of the feature
+  optional string name = 3;
+}
