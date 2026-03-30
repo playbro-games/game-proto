@@ -5,7 +5,7 @@ package domain.v1;
 import "common/v1/giftspin.proto";
 import "domain/v1/freespins.proto";
 import "domain/v1/spins.proto";
-import "domain/v1/buy_bonus.proto";
+import "domain/v1/buy_feature.proto";
 
 // Context represents the overall state of the current game session.
 // Including available player actions, the current game mode, and detailed information about
@@ -34,5 +34,5 @@ message Context {
   domain.v1.Freespins freespins = 5;
 
   // Shows the user-selected buy bonus game mode.
-  optional domain.v1.BuyBonusType buy_mode = 6;
+  optional BuyFeatureType buy_feature_type = 6;
 }

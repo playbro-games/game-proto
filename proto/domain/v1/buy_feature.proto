@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package domain.v1;
 
-enum BuyBonusType {
+enum BuyFeatureType {
   NO_BUY = 0;
 
   // Standard Buy: x100 from bet
