@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package domain.v1;
 
+import "common/v1/buy_feature.proto";
 import "common/v1/buy_freespin.proto";
 import "common/v1/currency.proto";
 import "common/v1/symbol_payout.proto";
@@ -32,4 +33,7 @@ message Settings {
 
   // buy_freespin contains the configuration for purchasing free spins, if available.
   optional common.v1.BuyFreespin buy_freespin = 6;
+
+  // buy_features is a list of purchasable features available in the game, each represented by a BuyFeature message that includes the feature's unique identifier, price, and optional name. This allows players to see and purchase additional features that can enhance their gaming experience.
+  repeated common.v1.BuyFeature buy_features = 7;
 }
