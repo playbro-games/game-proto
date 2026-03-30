@@ -5,26 +5,8 @@ package domain.v1;
 import "common/v1/giftspin.proto";
 import "domain/v1/freespins.proto";
 import "domain/v1/spins.proto";
+import "domain/v1/buy_bonus.proto";
 
-
-enum BuyBonusType {
-  NO_BUY = 0;
-
-  // Standard Buy: x100 from bet
-  // Guaranteed minimum 4 Scatters, range 4–7.
-  // The bonus field starts with closed rows.
-  // A “buy spin” is triggered with guaranteed Scatters → winnings/cascades are processed → transition to the bonus.
-  STANDARD_BUY = 1;
-
-  // Super Buy: x500 from bet
-  // FS: Recommended 25.
-  // Potential: “fatter” in multipliers/events (exact parameters are configured).
-  SUPER_BUY = 2;
-
-  // Mystery Buy: x200 from bet
-  // The player chooses 1 of 3 elements → it results in either Standard or Super (odds determined by the mathematician).
-  MYSTERY_BUY = 3;
-}
 // Context represents the overall state of the current game session.
 // Including available player actions, the current game mode, and detailed information about
 // the main game spins, free spins, and any gift spins that may be active.
@@ -52,5 +34,5 @@ message Context {
   domain.v1.Freespins freespins = 5;
 
   // Shows the user-selected buy bonus game mode.
-  optional BuyBonusType buy_mode = 6;
+  optional domain.v1.BuyBonusType buy_mode = 6;
 }

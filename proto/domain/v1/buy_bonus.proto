@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package domain.v1;
+
+enum BuyBonusType {
+  NO_BUY = 0;
+
+  // Standard Buy: x100 from bet
+  // Guaranteed minimum 4 Scatters, range 4–7.
+  // The bonus field starts with closed rows.
+  // A “buy spin” is triggered with guaranteed Scatters → winnings/cascades are processed → transition to the bonus.
+  STANDARD_BUY = 1;
+
+  // Super Buy: x500 from bet
+  // FS: Recommended 25.
+  // Potential: “fatter” in multipliers/events (exact parameters are configured).
+  SUPER_BUY = 2;
+
+  // Mystery Buy: x200 from bet
+  // The player chooses 1 of 3 elements → it results in either Standard or Super (odds determined by the mathematician).
+  MYSTERY_BUY = 3;
+}
