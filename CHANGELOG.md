@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.0.4](https://github.com/playbro-games/game-proto/compare/v0.0.3...v0.0.4) (2026-03-19)
+
+
+### Bug Fixes
+
+* paths changed ([e1d5182](https://github.com/playbro-games/game-proto/commit/e1d5182826c6045657ddebfc259e1d42be0b8def))
+* windata ([2253b92](https://github.com/playbro-games/game-proto/commit/2253b92d53766aa3eb8fdcfd707540bef06d1f66))
+* windata ([2967f50](https://github.com/playbro-games/game-proto/commit/2967f500b18ebf62bf6eb3ff0ea89ad8a264713b))
+
 ## [0.0.3](https://github.com/playbro-games/game-proto/compare/v0.0.2...v0.0.3) (2026-03-06)
 
 
