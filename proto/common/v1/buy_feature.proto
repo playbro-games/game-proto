@@ -19,7 +19,7 @@ message BuyFeature {
 
 // Params provides additional fields unique to each game (in case of unique mechanics).
 message Params {
-  // selected_chest is a parameter for the game mechanics of buying a bonus. 
+  // chests_for_select is a parameter for the game mechanics of buying a bonus. 
   // The player chooses one of the chests offered to him on the screen.;
-  repeated int64 selected_chest = 1;
+  repeated int64 chests_for_select = 1;
 }
