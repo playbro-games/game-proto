@@ -4,12 +4,22 @@ package common.v1;
 
 // BuyFeature represents a purchasable feature in the game, including its unique identifier, price, and optional name.
 message BuyFeature {
-  // Unique identifier for the feature
+  // Unique identifier for the feature.
   int32 id = 1;
 
-  // Price of the feature in the smallest currency unit (e.g., cents)
+  // Price of the feature in the smallest currency unit (e.g., cents).
   int32 price = 2;
 
-  // Name of the feature
+  // Name of the feature.
   optional string name = 3;
+
+  // Unique params to each game.
+  optional Params params = 4;
+}
+
+// Params provides additional fields unique to each game (in case of unique mechanics).
+message Params {
+  // choice is a parameter for the game mechanics of buying a bonus. 
+  // The player chooses one of the chests offered to him on the screen.;
+  repeated int64 choice = 1;
 }

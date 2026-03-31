@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package domain.v1;
+
+
+// buy_feature_data stores all information in case there is a bonus game purchase mechanic in the game.
+message BuyFeatureData {
+  // type it may vary in different games depending on the documentation.
+  BuyFeatureType type = 1;
+}
+
+enum BuyFeatureType {
+  BUY_FEATURE_TYPE_NO_BUY_UNSPECIFIED = 0;
+
+  // Standard Buy: x100 from bet
+  // Guaranteed minimum 4 Scatters, range 4–7.
+  // The bonus field starts with closed rows.
+  // A “buy spin” is triggered with guaranteed Scatters → winnings/cascades are processed → transition to the bonus.
+  BUY_FEATURE_TYPE_STANDARD_BUY = 1;
+
+  // Super Buy: x500 from bet
+  // FS: Recommended 25.
+  // Potential: “fatter” in multipliers/events (exact parameters are configured).
+  BUY_FEATURE_TYPE_SUPER_BUY = 2;
+
+  // Mystery Buy: x200 from bet
+  // The player chooses 1 of 3 elements → it results in either Standard or Super (odds determined by the mathematician).
+  BUY_FEATURE_TYPE_MYSTERY_BUY = 3;
+}

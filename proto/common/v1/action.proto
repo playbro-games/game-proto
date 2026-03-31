@@ -8,9 +8,12 @@ message ActionParams {
 
   optional int32 lines = 2;
 
-  // pick shows the user-selected freespins game mode, where each number 
+  // feature_id shows the user-selected freespins game mode, where each number 
   // corresponds to a specific mod defined by the game documentation.
-  optional int64 pick = 3;
+  optional int64 feature_id = 3;
+
+  // user_choose shows the chest selected by the user at the time of purchase of MYSTERY_BUY.
+  optional int64 user_choose = 4;
 }
 
 // Action represents a player's action in the game, including the name of the action and its associated parameters.
