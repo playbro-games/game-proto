@@ -2,8 +2,15 @@ syntax = "proto3";
 
 package domain.v1;
 
+
+// buy_feature_data stores all information in case there is a bonus game purchase mechanic in the game.
+message BuyFeatureData {
+  // type it may vary in different games depending on the documentation.
+  BuyFeatureType type = 1;
+}
+
 enum BuyFeatureType {
-  BUY_FEATURE_TYPE_NO_BUY = 0;
+  BUY_FEATURE_TYPE_NO_BUY_UNSPECIFIED = 0;
 
   // Standard Buy: x100 from bet
   // Guaranteed minimum 4 Scatters, range 4–7.
