@@ -21,5 +21,5 @@ message BuyFeature {
 message Params {
   // selected_chest is a parameter for the game mechanics of buying a bonus. 
   // The player chooses one of the chests offered to him on the screen.;
-  optional int64 selected_chest = 1;
+  repeated int64 selected_chest = 1;
 }
