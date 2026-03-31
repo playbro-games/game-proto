@@ -33,6 +33,6 @@ message Context {
   // global multipliers, win information, board state, and cascade mechanics specific to the free spins mode.
   domain.v1.Freespins freespins = 5;
 
-  // Shows the user-selected buy bonus game mode.
-  optional BuyFeatureType buy_feature_type = 6;
+  // buy_feature_data stores all information in case there is a bonus game purchase mechanic in the game.
+  optional BuyFeatureData buy_feature_data = 6;
 }
