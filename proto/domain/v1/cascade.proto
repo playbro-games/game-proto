@@ -27,7 +27,7 @@ message Cascade {
   repeated common.v1.Position blocked_cells = 4;
 
   // moved_blocked_cells is used to show the movement of blocked cells on the board, if any.
-  // It is a two-dimensional array of integers, where each subarray consists of 4 elements: 
+  // It is a two-dimensional array of integers, where each subarray consists of 4 elements:
   // old column, old row, new column, new row: [old_column, old_row, new_column, new_row].
   repeated common.v1.Position moved_blocked_cells = 5;
 

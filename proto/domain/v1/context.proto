@@ -2,10 +2,10 @@ syntax = "proto3";
 
 package domain.v1;
 
-import "common/v1/giftspin.proto";
+import "common/v1/gift_spin.proto";
+import "domain/v1/buy_feature.proto";
 import "domain/v1/freespins.proto";
 import "domain/v1/spins.proto";
-import "domain/v1/buy_feature.proto";
 
 // Context represents the overall state of the current game session.
 // Including available player actions, the current game mode, and detailed information about
