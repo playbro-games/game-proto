@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package common.v1;
+
+// EventType describes all possible types of game events. 
+// It can contain events unique to a particular game.
+enum EventType {
+   EVENT_TYPE_GLOBAL_MULTIPLIER_UPDATE = 0;
+}
+
+// An event is a structure of a game event. 
+// Events can be unique for each game and have their own fields. 
+// If an event occurs during gameplay, information about that event will be reflected in this structure.;
+message Event {
+    // The type of event. Allows you to understand which event occurred by a unique value.
+    EventType type = 1;
+    // value describes a certain value received during the event.
+    optional int32 value = 2;
+}
