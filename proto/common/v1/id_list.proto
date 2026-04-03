@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package common.v1;
+
+message IdList {
+  // Array of identifiers
+  repeated uint32 ids = 1 [packed = true];
+}
