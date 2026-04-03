@@ -3,8 +3,7 @@ syntax = "proto3";
 package api.base.v1;
 
 import "common/v1/user.proto";
-import "google/protobuf/struct.proto";
-// import "domain/v1/context.proto";
+import "domain/v1/context.proto";
 
 // API responses for game actions (start, spin, sync, error)
 message PlayResponse {
@@ -12,6 +11,5 @@ message PlayResponse {
   common.v1.User user = 1;
 
   // context contains the current game context, which may include information about the current state of the game, active bonuses, or other relevant data needed for the client to properly initialize the game session.
-  // domain.v1.Context context = 2;
-  google.protobuf.Struct context = 2;
+  domain.v1.Context context = 2;
 }
