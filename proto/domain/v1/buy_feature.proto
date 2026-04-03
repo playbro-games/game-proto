@@ -2,11 +2,18 @@ syntax = "proto3";
 
 package domain.v1;
 
+import "common/v1/position.proto";
 
-// buy_feature_data stores all information in case there is a bonus game purchase mechanic in the game.
+// BuyFeatureData represents the data structure for a buy feature in a game. It includes optional fields for the name of the buy feature, a list of unlocked cells on the game board, and the type of buy feature. The type of buy feature can be one of several predefined types, such as Standard Buy, Super Buy, or Mystery Buy, each with its own characteristics and effects on gameplay.
 message BuyFeatureData {
+  // name is an optional field that can be used to provide a human-readable identifier for the buy feature, which may be helpful for display purposes in the client interface or for logging and analytics.
+  optional string name = 1;
+
+  // unlocked_cells is a list of positions on the game board that have been unlocked as a result of the buy feature purchase.
+  repeated common.v1.Position unlocked_cells = 2;
+
   // type it may vary in different games depending on the documentation.
-  BuyFeatureType type = 1;
+  optional BuyFeatureType type = 3;
 }
 
 enum BuyFeatureType {
