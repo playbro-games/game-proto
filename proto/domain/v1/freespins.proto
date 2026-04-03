@@ -53,6 +53,6 @@ message Freespins {
   // A cascade represents the chain of events and symbol transformations that follow a winning spin, which can lead to additional wins and multiplier accumulation.
   repeated domain.v1.Cascade cascade = 11;
 
-// events contains all the information about the unique game events of a particular game that affect the user's gameplay.
+  // events contains all the information about the unique game events of a particular game that affect the user's gameplay.
   repeated common.v1.Event events = 12;
 }
