@@ -50,5 +50,5 @@ message Freespins {
 
   // cascade contains information about cascade mechanics that occurred as a result of the free spin.
   // A cascade represents the chain of events and symbol transformations that follow a winning spin, which can lead to additional wins and multiplier accumulation.
-  optional domain.v1.Cascade cascade = 11;
+  repeated domain.v1.Cascade cascade = 11;
 }

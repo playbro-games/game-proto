@@ -13,13 +13,13 @@ message Spins {
   // before being applied to the base bet.
   optional int64 total_multiplier = 1;
 
-  // roundbet represents the actual bet amount the player wagered for this specific spin.
+  // round_bet represents the actual bet amount the player wagered for this specific spin.
   // This value is essential for calculating payouts and displaying the bet information to the player.
-  int64 roundbet = 2;
+  int64 round_bet = 2;
 
-  // roundwin represents the total monetary winnings from the spin,
+  // round_win represents the total monetary winnings from the spin,
   // calculated by multiplying the bet amount by the total multiplier and any applicable bonus multipliers or features.
-  int64 roundwin = 3;
+  int64 round_win = 3;
 
   // winline contains a list of all winning payline combinations that appeared on the board during this spin.
   // Each entry includes symbol information, positions, occurrence count, and payout amount for that specific winning line.
@@ -31,5 +31,7 @@ message Spins {
 
   // cascade contains information about cascade or chain reaction mechanics that occurred following this spin.
   // A cascade represents the automatic removal of winning symbols and subsequent symbol drops that can create additional winning combinations and accumulate multipliers.
-  optional domain.v1.Cascade cascade = 6;
+  repeated domain.v1.Cascade cascade = 6;
+
+  optional int64 bet_per_line = 7;
 }
