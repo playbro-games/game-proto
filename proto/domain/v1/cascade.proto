@@ -4,6 +4,7 @@ package domain.v1;
 
 import "common/v1/cluster.proto";
 import "common/v1/id_list.proto";
+import "common/v1/movement.proto";
 import "common/v1/position.proto";
 import "common/v1/random_event.proto";
 import "common/v1/scatters.proto";
@@ -30,7 +31,7 @@ message Cascade {
   // moved_blocked_cells is used to show the movement of blocked cells on the board, if any.
   // It is a two-dimensional array of integers, where each subarray consists of 4 elements:
   // old column, old row, new column, new row: [old_column, old_row, new_column, new_row].
-  repeated common.v1.Position moved_blocked_cells = 5;
+  repeated common.v1.Movement moved_blocked_cells = 5;
 
   // random_event contains information about whether a random event has occurred during the cascade.
   // This field holds details about special triggered events that can alter the game board state and affect subsequent gameplay mechanics.
