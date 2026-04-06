@@ -6,7 +6,7 @@ import "common/v1/cluster.proto";
 import "common/v1/id_list.proto";
 import "common/v1/movement.proto";
 import "common/v1/position.proto";
-import "common/v1/random_event.proto";
+import "common/v1/event.proto";
 import "common/v1/scatters.proto";
 
 // Context represents the current state of the game, which may include information about the
@@ -35,7 +35,7 @@ message Cascade {
 
   // random_event contains information about whether a random event has occurred during the cascade.
   // This field holds details about special triggered events that can alter the game board state and affect subsequent gameplay mechanics.
-  common.v1.RandomEvent random_event = 6;
+  repeated common.v1.Event events = 6;
 
   // scatters is a list of scatter symbols that have appeared on the board as a result of the cascade.
   // Each scatter entry contains information about the scatter symbol, the payout amount,
