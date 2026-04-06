@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.4](https://github.com/playbro-games/game-proto/compare/v0.1.3...v0.1.4) (2026-04-03)
+
+
+### Bug Fixes
+
+* movement ([7ccf528](https://github.com/playbro-games/game-proto/commit/7ccf52849b83fa9d42eff442617146e3270db432))
+* movement ([5bf7b7c](https://github.com/playbro-games/game-proto/commit/5bf7b7c2468d72989139590135aeb31e8e9f38ab))
+
 ## [0.1.3](https://github.com/playbro-games/game-proto/compare/v0.1.2...v0.1.3) (2026-04-03)
 
 
