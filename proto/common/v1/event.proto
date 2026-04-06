@@ -26,7 +26,7 @@ enum EventType {
 
 // An event is a structure of a game event. 
 // Events can be unique for each game and have their own fields. 
-// If an event occurs during gameplay, information about that event will be reflected in this structure.;
+// If an event occurs during gameplay, information about that event will be reflected in this structure.
 message Event {
     // The type of event. Allows you to understand which event occurred by a unique value.
     EventType type = 1;
