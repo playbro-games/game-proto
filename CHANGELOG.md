@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.1](https://github.com/playbro-games/game-proto/compare/v0.2.0...v0.2.1) (2026-04-06)
+
+
+### Bug Fixes
+
+* cluster positions fixed ([5983e66](https://github.com/playbro-games/game-proto/commit/5983e664f194320792040c042ba42f1cd3baae56))
+* cluster positions fixed ([b4405d7](https://github.com/playbro-games/game-proto/commit/b4405d73406983a486f6328f23f25d02be85d7b7))
+
 ## [0.2.0](https://github.com/playbro-games/game-proto/compare/v0.1.4...v0.2.0) (2026-04-06)
 
 
