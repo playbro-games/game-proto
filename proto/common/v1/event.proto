@@ -34,11 +34,11 @@ message Event {
     // value describes a certain value received during the event.
     optional int32 value = 2;
     
-    // unlocked_cells is a list of previously blocked or locked board positions that have been unlocked as a result of this random event.
+    // unlocked_cells is a list of previously blocked or locked board positions that have been unlocked as a result of this event.
     // These cells now become available for gameplay interaction.
     repeated Position unlocked_cells = 3;
     
-    // updated_positions is a list of all board positions that were affected or modified by this random event.
+    // updated_positions is a list of all board positions that were affected or modified by this event.
     // This includes positions where the event was triggered or where visual/state changes occurred.
      repeated Position updated_positions = 4;
 }
