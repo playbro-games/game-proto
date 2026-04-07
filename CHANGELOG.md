@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.2](https://github.com/playbro-games/game-proto/compare/v0.2.1...v0.2.2) (2026-04-07)
+
+
+### Bug Fixes
+
+* normilized ([dbccf73](https://github.com/playbro-games/game-proto/commit/dbccf735715761650338baf86c51ed759af62e41))
+* normilized ([9b7adb5](https://github.com/playbro-games/game-proto/commit/9b7adb5529a0c9db1d697dc8b578123468ae1436))
+
 ## [0.2.1](https://github.com/playbro-games/game-proto/compare/v0.2.0...v0.2.1) (2026-04-06)
 
 
