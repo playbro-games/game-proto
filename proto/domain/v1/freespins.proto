@@ -2,56 +2,55 @@ syntax = "proto3";
 
 package domain.v1;
 
-import "common/v1/winline.proto";
-import "domain/v1/cascade.proto";
 import "common/v1/event.proto";
+import "common/v1/windata.proto";
+import "domain/v1/cascade.proto";
 
 // Freespins contains the complete context of the free spins bonus game,
 // providing all information necessary for the frontend to render and display the free spins game session.
-// Including remaining spins, multipliers, winning combinations, and board state.
+// Including remaining spins, multipliers, winning combinations, cascades, and related game events.
 message Freespins {
+  // round_bet represents the actual bet amount the player wagered for this specific spin.
+  // This value is essential for calculating payouts and displaying the bet information to the player.
+  int64 round_bet = 1;
+
+  // round_win represents the total monetary winnings from the spin,
+  // calculated by multiplying the bet amount by the total multiplier and any applicable bonus multipliers or features.
+  int64 round_win = 2;
+
+  // total_multiplier represents the combined multiplier value for the current spin result.
+  // This includes all symbol multipliers and board-wide multiplier contributions accumulated during the spin,
+  // before being applied to the base bet.
+  optional int64 total_multiplier = 3;
+
+  // winline contains a list of all winning payline combinations that appeared on the board during this spin.
+  // Each entry includes symbol information, positions, occurrence count, and payout amount for that specific winning line.
+  repeated common.v1.WinData winline = 4;
+
+  // cascade contains information about cascade or chain reaction mechanics that occurred following this spin.
+  // A cascade represents the automatic removal of winning symbols and subsequent symbol drops that can create additional winning combinations and accumulate multipliers.
+  repeated domain.v1.Cascade cascade = 5;
+
+  optional int64 bet_per_line = 6;
+
   // global_multiplier represents a global accumulating multiplier that applies across the entire free spins session.
   // This multiplier grows with each cascade or special event during the free spins round and is distinct from individual spin multipliers.
-  optional int64 global_multiplier = 1;
+  optional int64 global_multiplier = 7;
 
   // rounds_left indicates how many free spins remain to be played before the bonus round concludes.
   // When this value reaches zero, the free spins feature is complete and normal gameplay resumes.
-  int64 rounds_left = 2;
+  int64 rounds_left = 8;
 
   // rounds_granted indicates the number of additional free spins that were just awarded to the player in the current response.
   // This value is typically non-zero only when new spins are being granted (e.g., through scatter retriggers) and should be added to the player's total spin count.
-  int64 rounds_granted = 3;
+  int64 rounds_granted = 9;
 
   // rounds_total represents the cumulative total number of free spins that have been played so far during this free spins session,
   // allowing the frontend to track progress through the bonus round.
-  int64 rounds_total = 4;
-
-  // total_multiplier represents the combined multiplier value for the current spin result in the free spins round.
-  // This includes all symbol and board multiplier contributions accumulated during that specific spin.
-  optional int64 total_multiplier = 5;
+  int64 rounds_total = 10;
 
   // total_round_win represents the total monetary winnings from the current free spins round, calculated by multiplying the bet amount by the total multiplier and any applied bonuses.
-  optional int64 total_round_win = 6;
-
-  // roundbet represents the bet amount used for each individual spin during the free spins session.
-  // This value remains consistent throughout the free spins round unless explicitly modified.
-  int64 roundbet = 7;
-
-  // roundwin is a legacy field that is currently unused but preserved for backward compatibility.
-  // This field will be retired in future versions in favor of using total_round_win for all win calculations.
-  int64 roundwin = 8;
-
-  // winline contains a list of all winning line combinations that appeared on the board during the current free spin.
-  // Each entry includes symbol information, positions, occurrence count, and payout amount.
-  repeated common.v1.WinLine winline = 9;
-
-  // board represents the current game board state as a binary-encoded uint32 value.
-  // The board encodes a two-dimensional grid where each column represents a reel and each row position within that column represents a specific game symbol.
-  optional uint32 board = 10;
-
-  // cascade contains information about cascade mechanics that occurred as a result of the free spin.
-  // A cascade represents the chain of events and symbol transformations that follow a winning spin, which can lead to additional wins and multiplier accumulation.
-  repeated domain.v1.Cascade cascade = 11;
+  optional int64 total_round_win = 11;
 
   // events contains all the information about the unique game events of a particular game that affect the user's gameplay.
   repeated common.v1.Event events = 12;
