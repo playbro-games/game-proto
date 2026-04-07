@@ -4,6 +4,17 @@ package common.v1;
 
 import "common/v1/position.proto";
 
+enum Trigger {
+  // awarding free spin rounds
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  // buf:lint:ignore ENUM_ZERO_VALUE_SUFFIX
+  FREESPINS = 0;
+
+  // adding extra free spins to an active free spins session
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  RETRIGGER_FREESPINS = 1;
+}
+
 /*
    * WinData может быть использован для передачи информации о выигрыше в игровом процессе.
 
@@ -30,7 +41,7 @@ message WinData {
 
   // The Trigger field is optional and specifies what event or condition will be triggered after this win, such as a bonus feature or a specific game state.
   // example "freespins" or "MAX_WIN"
-  optional string trigger = 5;
+  optional Trigger trigger = 5;
 
   // freespins is an optional field that indicates the number of free spins awarded as a result of the win, which can be used to enhance the player's gaming experience by providing additional opportunities to win without placing additional bets.
   optional int32 freespins = 6;

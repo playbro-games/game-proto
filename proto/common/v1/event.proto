@@ -4,41 +4,41 @@ package common.v1;
 
 import "common/v1/position.proto";
 
-// EventType describes all possible types of game events. 
+// EventType describes all possible types of game events.
 // It can contain events unique to a particular game.
 enum EventType {
-    EVENT_TYPE_UNKNOWN_UNSPECIFIED = 0;
-    
-    // EVENT_TYPE_GLOBAL_MULTIPLIER_UPDATE during the game randomly increases the value of the global multiplier under certain conditions, 
-    // depending on the documentation of the game.
-    EVENT_TYPE_GLOBAL_MULTIPLIER_UPDATE = 1;
-    
-    // EVENT_TYPE_BOOM selects a position on the board and destroys the contents of the 3x3 cells relative to the center. 
-    // Does not touch wild, scatter and multiplier symbols.
-    EVENT_TYPE_BOOM = 2;
+  EVENT_TYPE_UNKNOWN_UNSPECIFIED = 0;
 
-    // EVENT_TYPE_SELECTION replaces a random number of symbols on the board with another symbol under certain conditions defined by the game documentation.
-    EVENT_TYPE_SELECTION = 3;
+  // EVENT_TYPE_GLOBAL_MULTIPLIER_UPDATE during the game randomly increases the value of the global multiplier under certain conditions,
+  // depending on the documentation of the game.
+  EVENT_TYPE_GLOBAL_MULTIPLIER_UPDATE = 1;
 
-    // EVENT_TYPE_LINE destroys a horizontal or vertical line on the game board according to certain conditions described in the game documentation.
-    EVENT_TYPE_LINE = 4;
+  // EVENT_TYPE_BOOM selects a position on the board and destroys the contents of the 3x3 cells relative to the center.
+  // Does not touch wild, scatter and multiplier symbols.
+  EVENT_TYPE_BOOM = 2;
+
+  // EVENT_TYPE_SELECTION replaces a random number of symbols on the board with another symbol under certain conditions defined by the game documentation.
+  EVENT_TYPE_SELECTION = 3;
+
+  // EVENT_TYPE_LINE destroys a horizontal or vertical line on the game board according to certain conditions described in the game documentation.
+  EVENT_TYPE_LINE = 4;
 }
 
-// An event is a structure of a game event. 
-// Events can be unique for each game and have their own fields. 
+// An event is a structure of a game event.
+// Events can be unique for each game and have their own fields.
 // If an event occurs during gameplay, information about that event will be reflected in this structure.
 message Event {
-    // The type of event. Allows you to understand which event occurred by a unique value.
-    EventType type = 1;
+  // The type of event. Allows you to understand which event occurred by a unique value.
+  EventType type = 1;
 
-    // value describes a certain value received during the event.
-    optional int32 value = 2;
-    
-    // unlocked_cells is a list of previously blocked or locked board positions that have been unlocked as a result of this event.
-    // These cells now become available for gameplay interaction.
-    repeated Position unlocked_cells = 3;
-    
-    // updated_positions is a list of all board positions that were affected or modified by this event.
-    // This includes positions where the event was triggered or where visual/state changes occurred.
-     repeated Position updated_positions = 4;
+  // value describes a certain value received during the event.
+  optional int32 value = 2;
+
+  // unlocked_cells is a list of previously blocked or locked board positions that have been unlocked as a result of this event.
+  // These cells now become available for gameplay interaction.
+  repeated Position unlocked_cells = 3;
+
+  // updated_positions is a list of all board positions that were affected or modified by this event.
+  // This includes positions where the event was triggered or where visual/state changes occurred.
+  repeated Position updated_positions = 4;
 }

@@ -8,30 +8,26 @@ import "domain/v1/cascade.proto";
 // Spins contains the complete context of the main game session, providing all information necessary for the frontend to render the main game display.
 // Including bet, winnings, winning combinations, board state, and any cascade mechanics that have occurred.
 message Spins {
-  // total_multiplier represents the combined multiplier value for the current spin result.
-  // This includes all symbol multipliers and board-wide multiplier contributions accumulated during the spin,
-  // before being applied to the base bet.
-  optional int64 total_multiplier = 1;
-
   // round_bet represents the actual bet amount the player wagered for this specific spin.
   // This value is essential for calculating payouts and displaying the bet information to the player.
-  int64 round_bet = 2;
+  int64 round_bet = 1;
 
   // round_win represents the total monetary winnings from the spin,
   // calculated by multiplying the bet amount by the total multiplier and any applicable bonus multipliers or features.
-  int64 round_win = 3;
+  int64 round_win = 2;
+
+  // total_multiplier represents the combined multiplier value for the current spin result.
+  // This includes all symbol multipliers and board-wide multiplier contributions accumulated during the spin,
+  // before being applied to the base bet.
+  optional int64 total_multiplier = 3;
 
   // winline contains a list of all winning payline combinations that appeared on the board during this spin.
   // Each entry includes symbol information, positions, occurrence count, and payout amount for that specific winning line.
   repeated common.v1.WinData winline = 4;
 
-  // board represents the current game board state as a binary-encoded uint32 value.
-  // The board encodes a two-dimensional grid layout where each column represents a reel and each position within a column represents the symbol occupying that cell.
-  optional uint32 board = 5;
-
   // cascade contains information about cascade or chain reaction mechanics that occurred following this spin.
   // A cascade represents the automatic removal of winning symbols and subsequent symbol drops that can create additional winning combinations and accumulate multipliers.
-  repeated domain.v1.Cascade cascade = 6;
+  repeated domain.v1.Cascade cascade = 5;
 
-  optional int64 bet_per_line = 7;
+  optional int64 bet_per_line = 6;
 }

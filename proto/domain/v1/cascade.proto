@@ -2,12 +2,11 @@ syntax = "proto3";
 
 package domain.v1;
 
-import "common/v1/cluster.proto";
+import "common/v1/event.proto";
 import "common/v1/id_list.proto";
 import "common/v1/movement.proto";
 import "common/v1/position.proto";
-import "common/v1/event.proto";
-import "common/v1/scatters.proto";
+import "common/v1/windata.proto";
 
 // Context represents the current state of the game, which may include information about the
 // current board layout, active bonuses, or other relevant data needed for the client to properly manage the game session.
@@ -18,7 +17,7 @@ message Cascade {
 
   // cluster is a list of clusters that represent groups of matching symbols on the game board, which can lead to wins.
   // Each cluster contains information about the symbol, the payout amount, the count of symbols in the cluster, and their positions on the board.
-  repeated common.v1.Cluster clusters = 2;
+  repeated common.v1.WinData clusters = 2;
 
   // unlocked_cells is a list of positions on the game board that have been unlocked as a result of the cascade.
   // Each position indicates a specific cell that is now available for interaction or further gameplay actions.
@@ -40,5 +39,5 @@ message Cascade {
   // scatters is a list of scatter symbols that have appeared on the board as a result of the cascade.
   // Each scatter entry contains information about the scatter symbol, the payout amount,
   // the trigger event (such as freespins), and the positions where the scatters are located.
-  repeated common.v1.Scatters scatters = 7;
+  repeated common.v1.WinData scatters = 7;
 }
