@@ -8,7 +8,7 @@ import "domain/v1/cascade.proto";
 
 // Freespins contains the complete context of the free spins bonus game,
 // providing all information necessary for the frontend to render and display the free spins game session.
-// Including remaining spins, multipliers, winning combinations, and board state.
+// Including remaining spins, multipliers, winning combinations, cascades, and related game events.
 message Freespins {
   // round_bet represents the actual bet amount the player wagered for this specific spin.
   // This value is essential for calculating payouts and displaying the bet information to the player.
