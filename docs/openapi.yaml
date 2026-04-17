@@ -1,0 +1,238 @@
+openapi: 3.1.0
+info:
+  title: Game API
+  version: 0.0.1
+
+paths:
+  /init:
+    options:
+      summary: Check protobuf support
+      responses:
+        '200':
+          description: OK
+          headers:
+            Accept-Post:
+              schema:
+                type: string
+              description: Supported content types (application/x-protobuf, application/json)
+
+    post:
+      summary: Init game
+      security:
+        - bearerAuth: []
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InitRequest'
+          application/x-protobuf:
+            schema:
+              type: string
+              format: binary
+
+      responses:
+        '200':
+          description: Init response
+          content:
+            application/json:
+                schema:
+                  $ref: '#/components/schemas/InitResponse'
+            application/x-protobuf:
+              schema:
+                type: string
+                format: binary
+            
+
+  /command:
+    post:
+      summary: Execute game command
+      security:
+        - bearerAuth: []
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommandRequest'
+          application/x-protobuf:
+            schema:
+              type: string
+              format: binary
+
+      responses:
+        '200':
+          description: Command response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResponse'
+            application/x-protobuf:
+              schema:
+                type: string
+                format: binary
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+
+  schemas:
+
+    InitRequest:
+      type: object
+      properties:
+        game_name:
+          type: string
+      required: [game_name]
+
+    InitResponse:
+      type: object
+      properties:
+        balance:
+          type: integer
+        currency_code:
+          type: string
+        bet_multiplier:
+          type: integer
+
+        lines:
+          type: array
+          items:
+            $ref: '#/components/schemas/Line'
+
+        symbol_payouts:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/Payouts'
+
+        scatter_payouts:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/Payouts'
+
+        step:
+          $ref: '#/components/schemas/Step'
+
+        cascade:
+          type: array
+          items:
+            $ref: '#/components/schemas/Step'
+
+      required:
+        - balance
+        - currency_code
+        - bet_multiplier
+        - lines
+        - symbol_payouts
+        - scatter_payouts
+        - cascade
+
+    CommandRequest:
+      type: object
+      properties:
+        command:
+          type: string
+        payload:
+          type: object
+          additionalProperties: true
+      required: [command]
+
+    CommandResponse:
+      type: object
+      properties:
+        balance:
+          type: integer
+        step:
+          $ref: '#/components/schemas/Step'
+        cascade:
+          type: array
+          items:
+            $ref: '#/components/schemas/Step'
+      required: [balance, cascade]
+
+    Line:
+      type: object
+      properties:
+        number:
+          type: integer
+        positions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Position'
+      required: [number, positions]
+
+    Position:
+      type: object
+      description: Coordinates on the game board (x = reel, y = row)
+      properties:
+        x:
+          type: integer
+        y:
+          type: integer
+      required: [x, y]
+
+    Payouts:
+      type: object
+      properties:
+        values:
+          type: array
+          items:
+            type: integer
+      required: [values]
+
+    Step:
+      type: object
+      properties:
+        symbols:
+          type: array
+          items:
+            $ref: '#/components/schemas/Symbol'
+        wins:
+          type: array
+          items:
+            $ref: '#/components/schemas/WinData'
+      required: [symbols, wins]
+
+    Symbol:
+      type: object
+      properties:
+        id:
+          type: integer
+        position:
+          $ref: '#/components/schemas/Position'
+      required: [id, position]
+
+    WinData:
+      type: object
+      description: Win information for lines, clusters or bonuses
+      properties:
+        symbol:
+          type: integer
+          minimum: 0
+        amount:
+          type: integer
+          format: int64
+        positions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Position'
+        line:
+          type: integer
+        trigger:
+          $ref: '#/components/schemas/Trigger'
+        freespins:
+          type: integer
+      required:
+        - symbol
+        - amount
+        - positions
+
+    Trigger:
+      type: string
+      enum:
+        - FREESPINS
+        - RETRIGGER_FREESPINS

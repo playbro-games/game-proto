@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package common.v1;
+
+/** Payouts represents the payout values for a specific symbol in a game. It contains a repeated field of values, which can be used to define the payout structure for different combinations of symbols in the game. */
+message Payouts {
+  /** values is a repeated field that holds the payout values for a specific symbol. Each entry in the values list corresponds to a particular combination of symbols in the game, and the value represents the payout amount for that combination. This structure allows for flexible definition of payout rules based on different symbol combinations. */
+  repeated int32 values = 1;
+}

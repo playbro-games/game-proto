@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package common.v1;
+
+import "common/v1/symbol.proto";
+import "common/v1/windata.proto";
+
+/** Step message represents a specific state or configuration of the game, including the symbols present and any winning combinations that have been achieved. This message is essential for tracking the progression of the game and evaluating wins based on the arrangement of symbols in each step. The Step message includes a list of Symbol messages, which provide detailed information about each symbol in the current step, as well as a list of WinData messages, which capture the winning combinations that have occurred in this step. This structure allows for a comprehensive representation of the game state at any given point, enabling accurate evaluation of wins and providing valuable information for both the game's logic and the player's understanding of their winnings. */
+message Step {
+  /** symbols is a repeated field that contains a list of Symbol messages, representing the symbols that are present in the current step of the game. Each Symbol message includes information about the specific symbol, such as its identifier, type, and any relevant attributes. This list of symbols is crucial for determining the game state and evaluating winning combinations based on the arrangement of symbols in this step. The use of a repeated field allows for flexibility in the number of symbols that can be included in each step, accommodating various game configurations and dynamics. */
+  repeated common.v1.Symbol symbols = 1;
+
+  /** wins is a repeated field that contains a list of WinData messages, representing the winning combinations that have been achieved in the current step of the game. Each WinData message includes information about the specific winning combination, such as the symbols involved, the payline on which the win occurred, and the payout amount associated with that win. This information is essential for both the game's logic and the player's understanding of their winnings, as it provides a clear representation of how wins are determined based on the arrangement of symbols in this step. The use of a repeated field allows for multiple winning combinations to be recorded in a single step, reflecting the potential for multiple wins in a single game state. */
+  repeated common.v1.WinData wins = 4;
+}

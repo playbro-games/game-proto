@@ -7,6 +7,7 @@
 node_modules
 src/
 dist/
+docs/index.html
 dist.zip
 
 # IDE

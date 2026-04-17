@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package common.v1;
+
+import "common/v1/position.proto";
+
+/** Symbol represents a symbol in a slot game, which is identified by an integer ID and has a specific position on the reels. Each Symbol message contains an ID that uniquely identifies the symbol within the game, and a Position message that specifies the coordinates of the symbol on the game board. This information is essential for determining winning combinations and calculating payouts based on the symbols that appear in the game state. The Symbol message serves as a fundamental building block for representing the various symbols that can appear in a slot game, allowing for flexible and efficient handling of symbol-related logic in the game's implementation. */
+message Symbol {
+  /** id is a unique identifier for the symbol, which can be used to reference and identify the specific symbol within the game's logic and user interface. This allows for easy tracking of wins and losses associated with each symbol, as well as enabling players to understand the significance of different symbols in the game. The ID can also be used to associate specific payout values with each symbol, allowing for efficient calculation of winnings based on the symbols that appear in winning combinations. */
+  int32 id = 1;
+
+  /** position specifies the coordinates of the symbol on the game board, which can be used to determine the arrangement of symbols in the game state and evaluate winning combinations based on their positions. The Position message contains the necessary information to identify the location of the symbol on the reels, allowing for accurate calculation of payouts based on the specific symbols that align along paylines or appear as scatter symbols in the game. This information is crucial for both the game's logic and the player's understanding of how wins are determined, as it allows the game to evaluate winning combinations based on the defined paylines and scatter symbol rules. */
+  Position position = 2;
+}
