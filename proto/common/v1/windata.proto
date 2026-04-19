@@ -5,14 +5,18 @@ package common.v1;
 import "common/v1/position.proto";
 
 enum Trigger {
-  // awarding free spin rounds
+  // FREESPINS awarding free spin rounds
   // buf:lint:ignore ENUM_VALUE_PREFIX
   // buf:lint:ignore ENUM_ZERO_VALUE_SUFFIX
   FREESPINS = 0;
 
-  // adding extra free spins to an active free spins session
+  // RETRIGGER_FREESPINS adding extra free spins to an active free spins session
   // buf:lint:ignore ENUM_VALUE_PREFIX
   RETRIGGER_FREESPINS = 1;
+
+  // MAXWIN occurs when the winning limit is reached within 1 spin. Finishes the spin.
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MAXWIN = 2;
 }
 
 /*

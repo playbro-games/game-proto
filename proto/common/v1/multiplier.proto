@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package common.v1;
+
+import "common/v1/position.proto";
+import "common/v1/id_list.proto";
+
+// Multipliers describes multiplier mechanics collected for a single resolved spin.
+// Depending on game rules, multipliers can significantly change the final payout.
+// Exact behavior, stacking order, and application rules are defined by each game.
+message Multipliers {
+    // placement stores all multiplier symbols as a flat list.
+    // Each item describes one multiplier with its board position and numeric value.
+    repeated Multiplier placement = 1;
+    
+    // matrix_placement stores multipliers in a board-shaped matrix.
+    // Non-zero values mark cells where multipliers exist; zero means no multiplier.
+    // The matrix dimensions must match the game board dimensions for the spin.
+    repeated common.v1.IdList matrix_placement = 2;
+    
+    // local_multiplier is the aggregated multiplier value for the current spin only.
+    // It represents the final local multiplier after all per-spin calculations.
+    int64 local_multiplier = 3;
+    
+    // global_multiplier is a series-level multiplier (for example, in free spins).
+    // It usually accumulates across rounds and is reset when the series ends.
+    // How it is accumulated and applied is game-specific.
+    int64 global_multiplier = 4;
+    
+    // round_win_without_multiplier is the round payout before applying multipliers.
+    // Use this field to compare base payout against multiplied payout.
+    int64 round_win_without_multiplier = 5;
+    
+    // round_win_with_multiplier is the final round payout after multiplier logic.
+    // If no multiplier is applied, this value can be equal to the base payout.
+    int64 round_win_with_multiplier = 6;
+}
+
+// Multiplier describes one multiplier symbol on the board.
+// It contains the symbol position and multiplier value relative to the game rules.
+message Multiplier {
+    // position is the board coordinate where this multiplier symbol is placed.
+    common.v1.Position position = 1;
+    
+    // value is the numeric multiplier shown on the symbol.
+    int64 value = 2;
+}
