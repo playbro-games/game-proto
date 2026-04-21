@@ -6,7 +6,7 @@ import "common/v1/windata.proto";
 import "domain/v1/cascade.proto";
 
 // Spins contains the complete context of the main game session, providing all information necessary for the frontend to render the main game display.
-// Including bet, winnings, winning combinations, board state, and any cascade mechanics that have occurred.
+// Including bet, winnings, winning combinations, multipliers, and any cascade mechanics that have occurred.
 message Spins {
   // round_bet represents the actual bet amount the player wagered for this specific spin.
   // This value is essential for calculating payouts and displaying the bet information to the player.

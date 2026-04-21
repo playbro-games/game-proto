@@ -15,8 +15,8 @@ message Cascade {
   // the symbols involved in the winning combination and calculate payouts accordingly.
   repeated common.v1.IdList reels = 1;
 
-  // cluster is a list of clusters that represent groups of matching symbols on the game board, which can lead to wins.
-  // Each cluster contains information about the symbol, the payout amount, the count of symbols in the cluster, and their positions on the board.
+  // clusters is a list of winning groups of matching symbols on the game board.
+  // Each entry contains win-related data for the cluster, such as the winning symbol information, payout, and positions on the board.
   repeated common.v1.WinData clusters = 2;
 
   // unlocked_cells is a list of positions on the game board that have been unlocked as a result of the cascade.
