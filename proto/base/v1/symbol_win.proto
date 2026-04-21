@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package base.v1;
+
+import "base/v1/position.proto";
+
+/**
+ * A SymbolWin message represents a winning combination in a slot machine game, identified by an unsigned integer win and assigned a specific position on the game board.
+ * Each SymbolWin message contains a win, which represents the value of the win in the game, and a Position message, which specifies the win's coordinates on the game board. This information is necessary for determining winning combinations and calculating payouts based on wins appearing in the game state.
+ * The SymbolWin message serves as a fundamental building block for representing the various winning combinations that can appear on a slot machine, enabling flexible and efficient processing of win-related logic within the game implementation.
+ */
+message SymbolWin {
+  /**
+   * The win field is an unsigned integer that represents the value of the win in the game.
+   * This value can be used to determine the payout for a specific win combination or to apply special rules for certain wins (e.g., bonus rounds, jackpots).
+   * The win allows for efficient processing and handling of wins within the game's mechanics, enabling the game to quickly identify and evaluate win-related conditions during gameplay.
+   */
+  uint32 win = 1;
+
+  /**
+   * The positions field is a repeated Position message that specifies the coordinates of the win on the game board.
+   * This information is crucial for determining the arrangement of wins in the game state, which is necessary for evaluating winning combinations and calculating payouts.
+   * Each Position message contains x and y coordinates, which can represent the location of the win in a 2D space or on a game board, allowing for consistent handling of positional data across different contexts and use cases within the game.
+   */
+  repeated base.v1.Position positions = 2;
+}

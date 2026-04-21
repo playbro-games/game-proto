@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package base.v1;
+
+/**
+ * Position represents a generic position, which can be used for various elements in a game or application.
+ * The Position message contains x and y coordinates, which can represent the location of an element in a 2D space or on a game board.
+ * This flexible structure allows for consistent handling of positional data across different contexts and use cases.
+ */
+message Position {
+  /**
+   * The x coordinate of the position. This can represent the horizontal location of an element in a 2D space or on a game board.
+   * The value is an integer, which allows for precise positioning and can be used in various calculations related to movement, collision detection, or rendering.
+   */
+  int32 x = 1;
+
+  /**
+   * The y coordinate of the position. This can represent the vertical location of an element in a 2D space or on a game board.
+   * The value is an integer, which allows for precise positioning and can be used in various calculations related to movement, collision detection, or rendering.
+   */
+  int32 y = 2;
+}

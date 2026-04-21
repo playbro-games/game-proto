@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package common.v1;
 
-import "common/v1/position.proto";
+import "common/v1/orthogonal_position.proto";
 
 /** Line represents a payline in a slot game, which is a specific pattern of positions on the reels that can result in a win when matching symbols align along that pattern. Each Line message contains a line number and a list of positions that define the specific pattern for that payline. The line number can be used to identify and reference the payline within the game's logic and user interface, while the positions provide the necessary information to determine if a winning combination has occurred along that line. */
 message Line {
@@ -10,5 +10,5 @@ message Line {
   int32 number = 1;
 
   /** positions is a list of board coordinates that define the specific pattern for the payline. Each position represents a coordinate on the reels where a symbol must align to form a winning combination along that line. By providing the positions for each payline, the game can determine if a winning combination has occurred and calculate the corresponding payout based on the symbols that align along those positions. This information is crucial for both the game's logic and the player's understanding of how wins are determined. */
-  repeated Position positions = 2;
+  repeated common.v1.OrthogonalPosition positions = 2;
 }

@@ -5,7 +5,7 @@ package domain.v1;
 import "common/v1/event.proto";
 import "common/v1/id_list.proto";
 import "common/v1/movement.proto";
-import "common/v1/position.proto";
+import "common/v1/orthogonal_position.proto";
 import "common/v1/windata.proto";
 
 // Context represents the current state of the game, which may include information about the
@@ -21,11 +21,11 @@ message Cascade {
 
   // unlocked_cells is a list of positions on the game board that have been unlocked as a result of the cascade.
   // Each position indicates a specific cell that is now available for interaction or further gameplay actions.
-  repeated common.v1.Position unlocked_cells = 3;
+  repeated common.v1.OrthogonalPosition unlocked_cells = 3;
 
   // blocked_cells is a list of positions on the game board that have been blocked or locked as a result of the cascade.
   // These cells are temporarily unavailable for future interactions until they are explicitly unlocked or the game state changes.
-  repeated common.v1.Position blocked_cells = 4;
+  repeated common.v1.OrthogonalPosition blocked_cells = 4;
 
   // moved_blocked_cells is used to show the movement of blocked cells on the board, if any.
   // It is a two-dimensional array of integers, where each subarray consists of 4 elements:
