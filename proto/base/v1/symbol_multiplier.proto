@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package base.v1;
+
+import "base/v1/position.proto";
+
+/**
+ * A SymbolMultiplier message represents a multiplier in a slot machine game, identified by an unsigned integer value and assigned a specific position on the game board.
+ * Each SymbolMultiplier message contains a multiplier value, which represents the multiplier in the game, and a Position message, which specifies the multiplier's coordinates on the game board. This information is necessary for determining winning combinations and calculating payouts based on multipliers appearing in the game state.
+ * The SymbolMultiplier message serves as a fundamental building block for representing the various multipliers that can appear on a slot machine, enabling flexible and efficient processing of multiplier-related logic within the game implementation.
+ */
+message SymbolMultiplier {
+  /**
+   * The multiplier field is an unsigned integer that represents the multiplier value in the game.
+   * This value can be used to determine the payout for a specific win combination or to apply special rules for certain multipliers (e.g., bonus rounds, jackpots).
+   * The multiplier allows for efficient processing and handling of multipliers within the game's mechanics, enabling the game to quickly identify and evaluate multiplier-related conditions during gameplay.
+   */
+  uint32 multiplier = 1;
+
+  /**
+   * The position field is a Position message that specifies the coordinates of the multiplier on the game board.
+   * This information is crucial for determining the arrangement of multipliers in the game state, which is necessary for evaluating winning combinations and calculating payouts.
+   * The Position message contains x and y coordinates, which can represent the location of the multiplier in a 2D space or on a game board, allowing for consistent handling of positional data across different contexts and use cases within the game.
+   */
+  base.v1.Position position = 2;
+}

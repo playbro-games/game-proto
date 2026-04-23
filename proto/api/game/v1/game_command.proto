@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package api.game.v1;
+
+import "base/v1/step.proto";
+import "google/protobuf/struct.proto";
+
+/**
+ * API request for command action
+ */
+message GameCommandRequest {
+  /**
+   * command is a string that represents the specific command or action that the client wants to execute in the game. This field allows the client to specify the desired operation, such as spinning the reels, activating a bonus feature, or performing any other game-related action. The command can be used by the server to determine how to process the request and update the game state accordingly, providing a flexible and extensible way to handle various game interactions based on the client's input.
+   */
+  string command = 1;
+
+  /**
+   * payload is a structured data field that can contain additional information or parameters related to the command being executed. This field allows the client to provide any necessary details or context that may be required for the server to properly process the command and update the game state. The use of a structured data format, such as a JSON-like structure, enables the client to include complex data in a flexible manner, allowing for a wide range of commands and interactions within the game. The server can then parse this payload to extract relevant information and perform the appropriate actions based on the command and its associated parameters.
+   */
+  google.protobuf.Struct payload = 2;
+}
+
+/**
+ * API response for command action
+ */
+message GameCommandResponse {
+  /**
+   * The initial balance for the game, which can be used by the client to set up the game state accordingly.
+   */
+  uint32 balance = 1;
+
+  /**
+   * step is an optional field that contains the initial step of the game, which can be used to set up the initial game state and provide the necessary information for the client to render the game accordingly. The Step message includes a list of symbols that represent the initial arrangement of symbols on the reels, allowing the client to display the starting configuration of the game. This information is essential for both the game's logic and the player's understanding of how the game begins, as it provides a visual representation of the initial state of the game and allows for accurate evaluation of winning combinations based on the symbols that appear in this initial step.
+   */
+  repeated base.v1.Step steps = 2;
+}

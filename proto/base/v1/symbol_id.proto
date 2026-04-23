@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package base.v1;
+
+import "base/v1/position.proto";
+
+/**
+ * A SymbolId message represents a slot machine symbol, identified by an integer identifier (ID) and assigned a specific position on the game board.
+ * Each SymbolId message contains an ID, which uniquely identifies the symbol in the game, and a Position message, which specifies the symbol's coordinates on the game board. This information is necessary for determining winning combinations and calculating payouts based on symbols appearing in the game state.
+ * The SymbolId message serves as a fundamental building block for representing the various symbols that can appear on a slot machine, enabling flexible and efficient processing of symbol-related logic within the game implementation.
+ */
+message SymbolId {
+  /**
+   * The ID field is an integer that uniquely identifies the symbol in the game.
+   * This identifier can be used to reference specific symbols in the game logic, such as determining payouts based on symbol combinations or applying special rules for certain symbols (e.g., wilds, scatters).
+   * The ID allows for efficient processing and handling of symbols within the game's mechanics, enabling the game to quickly identify and evaluate symbol-related conditions during gameplay.
+   */
+  uint32 id = 1;
+
+  /**
+   * The position field is a Position message that specifies the coordinates of the symbol on the game board.
+   * This information is crucial for determining the arrangement of symbols in the game state, which is necessary for evaluating winning combinations and calculating payouts.
+   * The Position message contains x and y coordinates, which can represent the location of the symbol in a 2D space or on a game board, allowing for consistent handling of positional data across different contexts and use cases within the game.
+   */
+  base.v1.Position position = 2;
+}

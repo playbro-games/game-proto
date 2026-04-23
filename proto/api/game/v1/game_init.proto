@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package api.game.v1;
+
+import "base/v1/step.proto";
+import "common/v1/line.proto";
+import "common/v1/payouts.proto";
+
+/**
+ * API request for initialization action
+ */
+message GameInitRequest {
+  /**
+   * game_name specifies the name of the game for which the initialization is being requested. This can be used to set up game-specific configurations and resources during the initialization process.
+   */
+  string game_name = 1;
+}
+
+/**
+ * API response for initialization action
+ */
+message GameInitResponse {
+  /**
+   * The initial balance for the game, which can be used by the client to set up the game state accordingly.
+   */
+  int32 balance = 1;
+
+  /**
+   * currency_code is a currency code representing the user's ISO 4217 currency (e.g. "USD", "EUR") or virtual currency (e.g. "mBTC")
+   */
+  string currency_code = 2;
+
+  /**
+   * bets is a repeated field that holds the available bet amounts for the game. Each entry in the bets list corresponds to a specific bet amount that players can choose from when placing their bets in the game. This information is crucial for both the game's logic and the player's understanding of the betting options available, as it allows the game to present the appropriate bet amounts to the player and enables the player to make informed decisions about their bets based on their preferences and budget.
+   */
+  repeated int32 bets = 3;
+
+  /**
+   * lines is a repeated field that holds the payline information for the game. Each entry in the lines list corresponds to a specific payline, which defines a pattern of positions on the reels that can result in a win when matching symbols align along that pattern. This information is crucial for both the game's logic and the player's understanding of how wins are determined, as it allows the game to evaluate winning combinations based on the defined paylines.
+   */
+  repeated common.v1.Line lines = 4;
+
+  /**
+   * symbol_payouts is a map that associates each symbol (identified by an integer key) with its corresponding payout values (represented by the Payouts message). This structure allows for efficient retrieval of payout information for each symbol, enabling the game to calculate winnings based on the specific symbols that appear in a winning combination. The use of a map ensures that the payout information can be easily accessed and updated as needed, providing flexibility in defining the payout rules for different symbols in the game.
+   */
+  map<int32, common.v1.Payouts> symbol_payouts = 5;
+
+  /**
+   * scatter_payouts is a map that associates each scatter symbol (identified by an integer key) with its corresponding payout values (represented by the Payouts message). Scatter symbols typically have special payout rules that differ from regular symbols, often providing payouts based on the total number of scatter symbols that appear anywhere on the reels, rather than requiring them to align on a specific payline. This structure allows for efficient retrieval of payout information for scatter symbols, enabling the game to calculate winnings based on the presence of scatter symbols in the game state. The use of a map ensures that the payout information for scatter symbols can be easily accessed and updated as needed, providing flexibility in defining the payout rules for different scatter symbols in the game.
+   */
+  map<int32, common.v1.Payouts> scatter_payouts = 6;
+
+  /**
+   * step is an optional field that contains the initial step of the game, which can be used to set up the initial game state and provide the necessary information for the client to render the game accordingly. The Step message includes a list of symbols that represent the initial arrangement of symbols on the reels, allowing the client to display the starting configuration of the game. This information is essential for both the game's logic and the player's understanding of how the game begins, as it provides a visual representation of the initial state of the game and allows for accurate evaluation of winning combinations based on the symbols that appear in this initial step.
+   */
+  repeated base.v1.Step steps = 7;
+}

@@ -1,0 +1,108 @@
+openapi: 3.1.0
+
+info:
+    title: Game API
+    version: 1.0.0
+    license:
+        name: MIT License
+        identifier: MIT
+
+servers:
+    - url: https://zonk-test.3th.click
+      description: Dev server
+
+paths:
+    /game/init:
+        post:
+            operationId: initGame
+            summary: Initialize game session
+
+            security:
+                - bearerAuth: []
+
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/InitRequest'
+
+            responses:
+                '200':
+                    description: Successful initialization
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/InitResponse'
+                '400':
+                    description: Bad Request
+
+    /game/command:
+        post:
+            operationId: executeCommand
+            summary: Execute game command
+
+            security:
+                - bearerAuth: []
+
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/CommandRequest'
+
+            responses:
+                '200':
+                    description: Command result
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/CommandResponse'
+                '400':
+                    description: Bad Request
+
+components:
+    securitySchemes:
+        bearerAuth:
+            type: http
+            scheme: bearer
+
+    schemas:
+        InitRequest:
+            type: object
+            required: [game_name]
+            properties:
+                game_name:
+                    type: string
+
+        InitResponse:
+            type: object
+            required: [balance, currency_code]
+            properties:
+                balance:
+                    type: integer
+                currency_code:
+                    type: string
+
+        CommandRequest:
+            type: object
+            required: [type]
+            properties:
+                type:
+                    type: string
+                    enum: [SPIN]
+
+                payload:
+                    type: object
+                    required: [bet]
+                    properties:
+                        bet:
+                            type: integer
+
+        CommandResponse:
+            type: object
+            required: [balance]
+            properties:
+                balance:
+                    type: integer

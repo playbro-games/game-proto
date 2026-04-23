@@ -1,0 +1,7 @@
+extends:
+    - recommended
+
+apis:
+    main:
+        # root: ./docs/openapi.yaml
+        root: ./dynamic/openapi.yaml

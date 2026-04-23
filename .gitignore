@@ -6,6 +6,7 @@
 # Dist
 node_modules
 src/
+dynamic/
 dist/
 dist.zip
 
