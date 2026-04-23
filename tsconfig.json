@@ -1,5 +1,5 @@
 {
-  "extends": ["./tsconfig.lint.json"],
-  "include": ["./src"],
-  "exclude": ["**/*.{spec,bench,test(-d)?}.*"]
+	"extends": ["./tsconfig.lint.json"],
+	"include": ["./src", "./plugins"],
+	"exclude": ["**/*.{spec,bench,test(-d)?}.*"]
 }

@@ -6,8 +6,8 @@
 # Dist
 node_modules
 src/
+dynamic/
 dist/
-docs/index.html
 dist.zip
 
 # IDE

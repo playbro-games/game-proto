@@ -1,9 +1,20 @@
 version: v2
 inputs:
-  - directory: proto
+    - directory: proto
 plugins:
-  - local: protoc-gen-es
-    out: src
-    opt:
-      - target=ts
-      # - json_types=true
+    - local: protoc-gen-es
+      out: src
+      include_imports: true
+      opt:
+          - target=ts
+          # - json_types=true
+
+    - local: ["pnpm", "tsx", "./plugins/gen-entry.ts"]
+      out: src
+      strategy: all
+      opt: target=ts
+
+    - local: ["pnpm", "tsx", "./plugins/protoc-gen-openapi.ts"]
+      out: dynamic
+      strategy: all
+      opt: target=ts

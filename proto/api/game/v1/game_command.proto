@@ -8,7 +8,7 @@ import "google/protobuf/struct.proto";
 /**
  * API request for command action
  */
-message CommandRequest {
+message GameCommandRequest {
   /**
    * command is a string that represents the specific command or action that the client wants to execute in the game. This field allows the client to specify the desired operation, such as spinning the reels, activating a bonus feature, or performing any other game-related action. The command can be used by the server to determine how to process the request and update the game state accordingly, providing a flexible and extensible way to handle various game interactions based on the client's input.
    */
@@ -23,7 +23,7 @@ message CommandRequest {
 /**
  * API response for command action
  */
-message CommandResponse {
+message GameCommandResponse {
   /**
    * The initial balance for the game, which can be used by the client to set up the game state accordingly.
    */

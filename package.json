@@ -13,26 +13,28 @@
 	},
 	"scripts": {
 		"clean": "rm -rf src",
-		"proto:gen": "pnpm clean && buf generate",
-		"proto:entry": "tsx scripts/gen-entry.ts",
-		"docs:build": "redoc-cli build docs/openapi.yaml -o docs/index.html",
-		"docs:dev": "redoc-cli serve docs/openapi.yaml",
-		"build": "pnpm proto:gen && pnpm proto:entry && vite build",
-		"format": "pnpm buf format -w",
-		"lint": "pnpm buf lint",
-		"test": "echo tests completed",
-		"type-check": "echo type check completed"
+		"proto:generate": "pnpm clean && buf generate",
+		"proto:build": "pnpm proto:generate && vite build",
+		"proto:format": "pnpm buf format -w",
+		"proto:dep-update": "pnpm buf dep update",
+		"proto:lint": "pnpm buf lint",
+		"docs:lint": "redocly lint",
+		"docs:build": "redocly build-docs -o ./dist/docs/index.html",
+		"docs:preview": "pnpm docs:build && open ./dist/docs/index.html"
 	},
 	"devDependencies": {
+		"@buf/googleapis_googleapis.bufbuild_es": "2.11.0-20250203201857-83c0f6c19b2f.1",
 		"@bufbuild/buf": "^1.66.0",
 		"@bufbuild/protoc-gen-es": "^2.11.0",
+		"@bufbuild/protoplugin": "^2.11.0",
+		"@redocly/cli": "^2.29.0",
 		"@types/node": "22.17.1",
-		"fast-glob": "^3.3.3",
-		"redoc-cli": "^0.13.21",
+		"openapi-types": "^12.1.3",
 		"tsx": "^4.21.0",
 		"typescript": "^5.9.3",
 		"vite": "^7.3.1",
-		"vite-plugin-dts": "^4.5.4"
+		"vite-plugin-dts": "^4.5.4",
+		"yaml": "^2.8.3"
 	},
 	"peerDependencies": {
 		"@bufbuild/protobuf": "^2.11.0"

@@ -1,25 +1,25 @@
 name: Deploy Docs
 
 on:
-  release:
-    types: [published]
+    release:
+        types: [published]
 
 env:
-  GITHUB_AUTH_TOKEN: ${{ secrets.PACKAGES_TOKEN }}
+    GITHUB_AUTH_TOKEN: ${{ secrets.PACKAGES_TOKEN }}
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
+    deploy:
+        runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v4
+        steps:
+            - uses: actions/checkout@v4
+            - uses: ./.github/actions/install
 
-      - uses: ./.github/actions/install
+            - run: pnpm proto:generate
+            - run: pnpm docs:build
 
-      - run: pnpm docs:build
-
-      - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
+            - name: Deploy to gh-pages
+              uses: peaceiris/actions-gh-pages@v4
+              with:
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  publish_dir: ./dist/docs

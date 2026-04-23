@@ -9,7 +9,7 @@ import "common/v1/payouts.proto";
 /**
  * API request for initialization action
  */
-message InitRequest {
+message GameInitRequest {
   /**
    * game_name specifies the name of the game for which the initialization is being requested. This can be used to set up game-specific configurations and resources during the initialization process.
    */
@@ -19,7 +19,7 @@ message InitRequest {
 /**
  * API response for initialization action
  */
-message InitResponse {
+message GameInitResponse {
   /**
    * The initial balance for the game, which can be used by the client to set up the game state accordingly.
    */
