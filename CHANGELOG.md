@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.3.0](https://github.com/playbro-games/game-proto/compare/v0.2.2...v0.3.0) (2026-04-23)
+
+
+### Features
+
+* docs lite ([c25b31f](https://github.com/playbro-games/game-proto/commit/c25b31fd54ac93a2efb30d2430cc72dae1b51b90))
+* docs lite ([a421af5](https://github.com/playbro-games/game-proto/commit/a421af5b7bffa766f4f79dd7875f8e2d4e68b957))
+
+
+### Bug Fixes
+
+* steps ([89fbfaf](https://github.com/playbro-games/game-proto/commit/89fbfaf2eb1c3ef4b318520e2d4d52f7edbcb6bb))
+
 ## [0.2.2](https://github.com/playbro-games/game-proto/compare/v0.2.1...v0.2.2) (2026-04-07)
 
 
