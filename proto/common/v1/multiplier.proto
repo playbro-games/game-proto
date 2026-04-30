@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package common.v1;
 
-import "common/v1/position.proto";
+import "common/v1/orthogonal_position.proto";
 import "common/v1/id_list.proto";
 import "common/v1/trigger.proto";
 
@@ -28,7 +28,7 @@ message Multipliers {
 // It contains the symbol position and multiplier value relative to the game rules.
 message SymbolMultiplier {
     // position is the board coordinate where this multiplier symbol is placed.
-    common.v1.Position position = 1;
+    OrthogonalPosition position = 1;
     
     // value is the numeric multiplier shown on the symbol.
     int64 value = 2;
