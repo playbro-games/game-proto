@@ -3,21 +3,7 @@ syntax = "proto3";
 package common.v1;
 
 import "common/v1/position.proto";
-
-enum Trigger {
-  // FREESPINS awarding free spin rounds
-  // buf:lint:ignore ENUM_VALUE_PREFIX
-  // buf:lint:ignore ENUM_ZERO_VALUE_SUFFIX
-  FREESPINS = 0;
-
-  // RETRIGGER_FREESPINS adding extra free spins to an active free spins session
-  // buf:lint:ignore ENUM_VALUE_PREFIX
-  RETRIGGER_FREESPINS = 1;
-
-  // MAXWIN occurs when the winning limit is reached within 1 spin. Finishes the spin.
-  // buf:lint:ignore ENUM_VALUE_PREFIX
-  MAXWIN = 2;
-}
+import "common/v1/trigger.proto";
 
 /*
    * WinData может быть использован для передачи информации о выигрыше в игровом процессе.
