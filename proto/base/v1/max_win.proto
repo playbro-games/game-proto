@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package base.v1;
+
+/**
+ * Represents the event when the maximum win has been reached in the game.
+ */
+message MaxWinReached {
+  /**
+   * The maximum win value that has been reached.
+   */
+  uint32 max_win_value = 1;
+
+  /**
+   * Indicates whether the final winnings were truncated to the maximum winnings.
+   * This field is optional and may be omitted from all messages.
+   */
+  optional bool cut = 2;
+}

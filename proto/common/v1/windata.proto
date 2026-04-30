@@ -2,8 +2,8 @@ syntax = "proto3";
 
 package common.v1;
 
-import "common/v1/position.proto";
 import "common/v1/trigger.proto";
+import "common/v1/orthogonal_position.proto";
 
 /*
    * WinData может быть использован для передачи информации о выигрыше в игровом процессе.
@@ -24,7 +24,7 @@ message WinData {
   int64 amount = 2;
 
   // positions is a list of board coordinates where the winning symbols are located. This allows the frontend to visually highlight and animate the winning combination to enhance player feedback and engagement. Positions are represented as coordinate pairs (x, y) where x is the reel index and y is the row position.
-  repeated Position positions = 3;
+  repeated common.v1.OrthogonalPosition positions = 3;
 
   // line is an optional field that indicates the specific payline on which the win occurred, which can be used to provide additional context about the winning combination and its payout structure.
   optional int32 line = 4;

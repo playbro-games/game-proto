@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package base.v1;
+
+import "base/v1/max_win.proto";
+import "base/v1/symbol_id.proto";
+import "base/v1/symbol_multiplier.proto";
+import "base/v1/symbol_win.proto";
+
+/**
+ * Step represents a single step in the game, which can be one of the following types.
+ */
+message Step {
+  oneof payload {
+    SymbolIdsStep symbol_ids = 1;
+    SymbolWinsStep symbol_wins = 2;
+    SymbolMultipliersStep symbol_multipliers = 3;
+    base.v1.MaxWinReached max_win_reached = 4;
+  }
+}
+
+message SymbolIdsStep {
+  repeated base.v1.SymbolId items = 1;
+}
+
+message SymbolWinsStep {
+  repeated base.v1.SymbolWin items = 1;
+}
+
+message SymbolMultipliersStep {
+  repeated base.v1.SymbolMultiplier items = 1;
+}

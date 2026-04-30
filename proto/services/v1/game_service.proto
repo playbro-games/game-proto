@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package services.v1;
+
+import "api/game/v1/game_command.proto";
+import "api/game/v1/game_init.proto";
+import "google/api/annotations.proto";
+
+service GameService {
+  /*
+   * GameInit is an API endpoint that initializes the game.
+   */
+  rpc GameInit(api.game.v1.GameInitRequest) returns (api.game.v1.GameInitResponse) {
+    option (google.api.http) = {
+      post: "game/init"
+      body: "*"
+    };
+  }
+
+  /*
+   * GameCommand is an API endpoint that executes a game command.
+   */
+  rpc GameCommand(api.game.v1.GameCommandRequest) returns (api.game.v1.GameCommandResponse) {
+    option (google.api.http) = {
+      post: "game/command"
+      body: "*"
+    };
+  }
+}

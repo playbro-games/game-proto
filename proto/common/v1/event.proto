@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package common.v1;
 
-import "common/v1/position.proto";
+import "common/v1/orthogonal_position.proto";
 
 // EventType describes all possible types of game events.
 // It can contain events unique to a particular game.
@@ -36,9 +36,9 @@ message Event {
 
   // unlocked_cells is a list of previously blocked or locked board positions that have been unlocked as a result of this event.
   // These cells now become available for gameplay interaction.
-  repeated Position unlocked_cells = 3;
+  repeated common.v1.OrthogonalPosition unlocked_cells = 3;
 
   // updated_positions is a list of all board positions that were affected or modified by this event.
   // This includes positions where the event was triggered or where visual/state changes occurred.
-  repeated Position updated_positions = 4;
+  repeated common.v1.OrthogonalPosition updated_positions = 4;
 }
