@@ -3,6 +3,7 @@ syntax = "proto3";
 package domain.v1;
 
 import "common/v1/windata.proto";
+import "common/v1/multiplier.proto";
 import "domain/v1/cascade.proto";
 
 // Spins contains the complete context of the main game session, providing all information necessary for the frontend to render the main game display.
@@ -16,18 +17,23 @@ message Spins {
   // calculated by multiplying the bet amount by the total multiplier and any applicable bonus multipliers or features.
   int64 round_win = 2;
 
-  // total_multiplier represents the combined multiplier value for the current spin result.
-  // This includes all symbol multipliers and board-wide multiplier contributions accumulated during the spin,
-  // before being applied to the base bet.
-  optional int64 total_multiplier = 3;
-
   // winline contains a list of all winning payline combinations that appeared on the board during this spin.
   // Each entry includes symbol information, positions, occurrence count, and payout amount for that specific winning line.
-  repeated common.v1.WinData winline = 4;
+  repeated common.v1.WinData winline = 3;
 
   // cascade contains information about cascade or chain reaction mechanics that occurred following this spin.
   // A cascade represents the automatic removal of winning symbols and subsequent symbol drops that can create additional winning combinations and accumulate multipliers.
-  repeated domain.v1.Cascade cascade = 5;
+  repeated domain.v1.Cascade cascade = 4;
 
-  optional int64 bet_per_line = 6;
+  // multipliers contains detailed multiplier mechanics for this spin, if supported.
+  // Omit this field when the game does not use multiplier features.
+  optional common.v1.Multipliers multipliers = 5;
+
+  // global_multiplier contains a multiplier that can persist or accumulate across a game feature or series of spins.
+  // Omit this field when the game does not use a global multiplier mechanic.
+  optional common.v1.GlobalMultiplier global_multiplier = 6;
+
+  // bet_per_line is the wager amount per payline.
+  // Use it when payout rules are based on line-level betting.
+  optional int64 bet_per_line = 7;
 }

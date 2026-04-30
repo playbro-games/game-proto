@@ -2,18 +2,8 @@ syntax = "proto3";
 
 package common.v1;
 
+import "common/v1/trigger.proto";
 import "common/v1/orthogonal_position.proto";
-
-enum Trigger {
-  // awarding free spin rounds
-  // buf:lint:ignore ENUM_VALUE_PREFIX
-  // buf:lint:ignore ENUM_ZERO_VALUE_SUFFIX
-  FREESPINS = 0;
-
-  // adding extra free spins to an active free spins session
-  // buf:lint:ignore ENUM_VALUE_PREFIX
-  RETRIGGER_FREESPINS = 1;
-}
 
 /*
    * WinData может быть использован для передачи информации о выигрыше в игровом процессе.

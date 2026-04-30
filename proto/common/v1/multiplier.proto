@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package common.v1;
+
+import "common/v1/orthogonal_position.proto";
+import "common/v1/id_list.proto";
+import "common/v1/trigger.proto";
+
+// Multipliers describes multiplier mechanics collected for a single resolved spin.
+// Depending on game rules, multipliers can significantly change the final payout.
+// Exact behavior, stacking order, and application rules are defined by each game.
+message Multipliers {
+    // placement stores all multiplier symbols as a flat list.
+    // Each item describes one multiplier with its board position and numeric value.
+    repeated SymbolMultiplier placement = 1;
+    
+    // matrix_placement stores multipliers in a board-shaped matrix.
+    // Non-zero values mark cells where multipliers exist; zero means no multiplier.
+    // The matrix dimensions must match the game board dimensions for the spin.
+    repeated common.v1.IdList matrix_placement = 2;
+    
+    // total_multiplier is the aggregated multiplier value for the current spin only.
+    // It represents the final multiplier after all per-spin calculations.
+    int64 total_multiplier = 3;
+}
+
+// SymbolMultiplier describes one multiplier symbol on the board.
+// It contains the symbol position and multiplier value relative to the game rules.
+message SymbolMultiplier {
+    // position is the board coordinate where this multiplier symbol is placed.
+    OrthogonalPosition position = 1;
+    
+    // value is the numeric multiplier shown on the symbol.
+    int64 value = 2;
+
+    // trigger is an optional event or condition associated with this multiplier symbol.
+    // Use it when collecting or applying the multiplier activates a game feature.
+    optional Trigger trigger = 3;
+}
+
+// GlobalMultiplier describes a multiplier that is shared across a game feature or series of spins.
+// It is commonly used for mechanics where the multiplier persists or accumulates beyond a single spin.
+message GlobalMultiplier {
+    // value is the current numeric value of the global multiplier.
+    // How this value is accumulated, applied, and reset is defined by each game.
+    int64 value = 1;
+
+    // trigger is an optional event or condition associated with the global multiplier.
+    // Use it when the global multiplier activates or is affected by a game feature.
+    optional Trigger trigger = 2;
+}

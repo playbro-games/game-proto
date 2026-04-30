@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package common.v1;
+
+enum Trigger {
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  UNKNOWN_UNSPECIFIED = 0;
+  // FREESPINS awarding free spin rounds
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  // buf:lint:ignore ENUM_ZERO_VALUE_SUFFIX
+  FREESPINS = 1;
+
+  // RETRIGGER_FREESPINS adding extra free spins to an active free spins session
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  RETRIGGER_FREESPINS = 2;
+
+  // MAXWIN occurs when the winning limit is reached within 1 spin. Finishes the spin.
+  // buf:lint:ignore ENUM_VALUE_PREFIX
+  MAXWIN = 3;
+}
