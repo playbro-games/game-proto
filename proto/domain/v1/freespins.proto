@@ -5,6 +5,7 @@ package domain.v1;
 import "common/v1/event.proto";
 import "common/v1/windata.proto";
 import "domain/v1/cascade.proto";
+import "common/v1/multiplier.proto";
 
 // Freespins contains the complete context of the free spins bonus game,
 // providing all information necessary for the frontend to render and display the free spins game session.
@@ -26,22 +27,30 @@ message Freespins {
   // A cascade represents the automatic removal of winning symbols and subsequent symbol drops that can create additional winning combinations and accumulate multipliers.
   repeated domain.v1.Cascade cascade = 4;
 
+  // multipliers contains detailed multiplier mechanics for this spin, if supported.
+  // Omit this field when the game does not use multiplier features.
+  optional common.v1.Multipliers multipliers = 5;
+
+  // global_multiplier contains a multiplier that can persist or accumulate across a game feature or series of spins.
+  // Omit this field when the game does not use a global multiplier mechanic.
+  optional common.v1.GlobalMultiplier global_multiplier = 6;
+
   // bet_per_line is the wager amount per payline.
   // Use it when payout rules are based on line-level betting.
-  optional int64 bet_per_line = 5;
+  optional int64 bet_per_line = 7;
 
   // rounds_left indicates how many free spins remain to be played before the bonus round concludes.
   // When this value reaches zero, the free spins feature is complete and normal gameplay resumes.
-  int64 rounds_left = 6;
+  int64 rounds_left = 8;
 
   // rounds_granted indicates the number of additional free spins that were just awarded to the player in the current response.
   // This value is typically non-zero only when new spins are being granted (e.g., through scatter retriggers) and should be added to the player's total spin count.
-  int64 rounds_granted = 7;
+  int64 rounds_granted = 9;
 
   // rounds_total represents the cumulative total number of free spins that have been played so far during this free spins session,
   // allowing the frontend to track progress through the bonus round.
-  int64 rounds_total = 8;
+  int64 rounds_total = 10;
 
   // events contains all the information about the unique game events of a particular game that affect the user's gameplay.
-  repeated common.v1.Event events = 9;
+  repeated common.v1.Event events = 11;
 }
