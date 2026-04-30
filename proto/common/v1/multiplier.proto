@@ -22,6 +22,10 @@ message Multipliers {
     // total_multiplier is the aggregated multiplier value for the current spin only.
     // It represents the final multiplier after all per-spin calculations.
     int64 total_multiplier = 3;
+
+    // trigger is an optional event or condition associated with this multiplier symbol.
+    // Use it when collecting or applying the multiplier activates a game feature.
+    optional Trigger trigger = 4;
 }
 
 // SymbolMultiplier describes one multiplier symbol on the board.
@@ -32,10 +36,6 @@ message SymbolMultiplier {
     
     // value is the numeric multiplier shown on the symbol.
     int64 value = 2;
-
-    // trigger is an optional event or condition associated with this multiplier symbol.
-    // Use it when collecting or applying the multiplier activates a game feature.
-    optional Trigger trigger = 3;
 }
 
 // GlobalMultiplier describes a multiplier that is shared across a game feature or series of spins.
