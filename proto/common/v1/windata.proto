@@ -2,8 +2,8 @@ syntax = "proto3";
 
 package common.v1;
 
-import "common/v1/trigger.proto";
 import "common/v1/orthogonal_position.proto";
+import "common/v1/trigger.proto";
 
 /*
    * WinData может быть использован для передачи информации о выигрыше в игровом процессе.

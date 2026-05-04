@@ -2,8 +2,8 @@ syntax = "proto3";
 
 package domain.v1;
 
-import "common/v1/windata.proto";
 import "common/v1/multiplier.proto";
+import "common/v1/windata.proto";
 import "domain/v1/cascade.proto";
 
 // Spins contains the complete context of the main game session, providing all information necessary for the frontend to render the main game display.
