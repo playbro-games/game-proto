@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.2](https://github.com/playbro-games/game-proto/compare/v0.3.1...v0.3.2) (2026-05-04)
+
+
+### Bug Fixes
+
+* typo ([8c291c1](https://github.com/playbro-games/game-proto/commit/8c291c14883458c19fa6066cc4bb6c71c2ebd904))
+* typo ([c3f3999](https://github.com/playbro-games/game-proto/commit/c3f3999cd7f650d7d484a42ce096d1521b8c9802))
+
 ## [0.3.1](https://github.com/playbro-games/game-proto/compare/v0.3.0...v0.3.1) (2026-05-04)
 
 
