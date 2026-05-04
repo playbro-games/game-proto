@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.1](https://github.com/playbro-games/game-proto/compare/v0.3.0...v0.3.1) (2026-05-04)
+
+
+### Bug Fixes
+
+* symbol multiplier changed ([e4d3347](https://github.com/playbro-games/game-proto/commit/e4d3347f44c34900cb7f9027c89db78aef29a861))
+* symbol multiplier changed ([c31bf83](https://github.com/playbro-games/game-proto/commit/c31bf83bebe1fb955f8b3ad27f2b6909621bfd08))
+
 ## [0.3.0](https://github.com/playbro-games/game-proto/compare/v0.2.2...v0.3.0) (2026-04-23)
 
 
