@@ -28,5 +28,5 @@ message SymbolWinsStep {
 }
 
 message SymbolMultipliersStep {
-  repeated base.v1.SymbolMultiplier items = 1;
+  repeated base.v1.SymbolMult items = 1;
 }

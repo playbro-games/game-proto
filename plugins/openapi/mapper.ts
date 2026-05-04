@@ -24,6 +24,15 @@ export function cleanComment(raw: string): string | undefined {
 		.trim();
 }
 
+/*
+	Сущность	Путь (Path)
+	Service	[6, service_index]
+	Method	[6, service_index, 2, method_index]
+	Message	[4, message_index]
+	Field	[4, message_index, 2, field_index]
+	Enum	[5, enum_index]
+	EnumValue	[5, enum_index, 2, value_index]
+*/
 function getMethodComment(method: DescMethod): string | undefined {
 	const file = method.parent.file;
 	const locations = file.proto.sourceCodeInfo?.location ?? [];

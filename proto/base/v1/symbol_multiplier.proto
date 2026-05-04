@@ -5,11 +5,11 @@ package base.v1;
 import "base/v1/position.proto";
 
 /**
- * A SymbolMultiplier message represents a multiplier in a slot machine game, identified by an unsigned integer value and assigned a specific position on the game board.
- * Each SymbolMultiplier message contains a multiplier value, which represents the multiplier in the game, and a Position message, which specifies the multiplier's coordinates on the game board. This information is necessary for determining winning combinations and calculating payouts based on multipliers appearing in the game state.
- * The SymbolMultiplier message serves as a fundamental building block for representing the various multipliers that can appear on a slot machine, enabling flexible and efficient processing of multiplier-related logic within the game implementation.
+ * A SymbolMult message represents a multiplier in a slot machine game, identified by an unsigned integer value and assigned a specific position on the game board.
+ * Each SymbolMult message contains a multiplier value, which represents the multiplier in the game, and a Position message, which specifies the multiplier's coordinates on the game board. This information is necessary for determining winning combinations and calculating payouts based on multipliers appearing in the game state.
+ * The SymbolMult message serves as a fundamental building block for representing the various multipliers that can appear on a slot machine, enabling flexible and efficient processing of multiplier-related logic within the game implementation.
  */
-message SymbolMultiplier {
+message SymbolMult {
   /**
    * The multiplier field is an unsigned integer that represents the multiplier value in the game.
    * This value can be used to determine the payout for a specific win combination or to apply special rules for certain multipliers (e.g., bonus rounds, jackpots).
