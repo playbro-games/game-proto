@@ -51,6 +51,9 @@ message Freespins {
   // allowing the frontend to track progress through the bonus round.
   int64 rounds_total = 10;
 
+  // total_win represents the cumulative total winnings from all free spins played so far in the current session, allowing the player to see their total winnings from the free spins bonus at a glance.
+  int64 total_win = 11;
+
   // events contains all the information about the unique game events of a particular game that affect the user's gameplay.
-  repeated common.v1.Event events = 11;
+  repeated common.v1.Event events = 12;
 }
