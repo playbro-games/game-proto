@@ -5,6 +5,7 @@ package domain.v1;
 import "common/v1/multiplier.proto";
 import "common/v1/windata.proto";
 import "domain/v1/cascade.proto";
+import "domain/v1/screen_result.proto";
 
 // Spins contains the complete context of the main game session, providing all information necessary for the frontend to render the main game display.
 // Including bet, winnings, winning combinations, multipliers, and any cascade mechanics that have occurred.
@@ -21,19 +22,23 @@ message Spins {
   // Each entry includes symbol information, positions, occurrence count, and payout amount for that specific winning line.
   repeated common.v1.WinData winline = 3;
 
+  // screen_result contains the current state of the game board, including the layout of symbols on the reels and any winning combinations or scatter symbols that have appeared.
+  // This field provides the frontend with all necessary information to render the game screen accurately, including the positions of symbols, winning lines, and any special features triggered by scatter symbols.
+  optional domain.v1.ScreenResult screen_result = 4;
+
   // cascade contains information about cascade or chain reaction mechanics that occurred following this spin.
   // A cascade represents the automatic removal of winning symbols and subsequent symbol drops that can create additional winning combinations and accumulate multipliers.
-  repeated domain.v1.Cascade cascade = 4;
+  repeated domain.v1.Cascade cascade = 5;
 
   // multipliers contains detailed multiplier mechanics for this spin, if supported.
   // Omit this field when the game does not use multiplier features.
-  optional common.v1.Multipliers multipliers = 5;
+  optional common.v1.Multipliers multipliers = 6;
 
   // global_multiplier contains a multiplier that can persist or accumulate across a game feature or series of spins.
   // Omit this field when the game does not use a global multiplier mechanic.
-  optional common.v1.GlobalMultiplier global_multiplier = 6;
+  optional common.v1.GlobalMultiplier global_multiplier = 7;
 
   // bet_per_line is the wager amount per payline.
   // Use it when payout rules are based on line-level betting.
-  optional int64 bet_per_line = 7;
+  optional int64 bet_per_line = 8;
 }

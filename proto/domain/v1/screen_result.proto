@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package domain.v1;
+
+import "common/v1/id_list.proto";
+import "common/v1/windata.proto";
+
+// ScreenResult represents the current state of the game board, including the layout of symbols on the reels and any winning combinations or scatter symbols that have appeared.
+// This message is used to provide the frontend with all necessary information to render the game screen accurately, including the positions of symbols, winning lines, and any special features triggered by scatter symbols.
+message ScreenResult {
+  // symbol ids is a list of symbol identifiers that are part of the cascade, which can be used to determine
+  // the symbols involved in the winning combination and calculate payouts accordingly.
+  repeated common.v1.IdList reels = 1;
+
+  // symbol_win is a list of winning groups of matching symbols on the game board.
+  // Each entry contains win-related data for the symbol_win, such as the winning symbol information, payout, and positions on the board.
+  repeated common.v1.WinData symbol_win = 2;
+
+  // scatters is a list of scatter symbols that have appeared on the board as a result of the cascade.
+  // Each scatter entry contains information about the scatter symbol, the payout amount,
+  // the trigger event (such as freespins), and the positions where the scatters are located.
+  repeated common.v1.WinData scatters = 3;
+}
