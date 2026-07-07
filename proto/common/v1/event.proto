@@ -22,6 +22,12 @@ enum EventType {
 
   // EVENT_TYPE_LINE destroys a horizontal or vertical line on the game board according to certain conditions described in the game documentation.
   EVENT_TYPE_LINE = 4;
+
+  // EVENT_TYPE_TRANSITION marks a transition between game states, for example entering or leaving a feature mode.
+  EVENT_TYPE_TRANSITION = 5;
+
+  // EVENT_TYPE_ANTICIPATION marks an anticipation event before a possible feature trigger.
+  EVENT_TYPE_ANTICIPATION = 6;
 }
 
 // An event is a structure of a game event.
@@ -41,4 +47,16 @@ message Event {
   // updated_positions is a list of all board positions that were affected or modified by this event.
   // This includes positions where the event was triggered or where visual/state changes occurred.
   repeated common.v1.OrthogonalPosition updated_positions = 4;
+
+  // name is a stable event identifier from the game rules.
+  // Use it when the event type is intentionally broad and the frontend needs a specific presentation hook.
+  optional string name = 5;
+
+  // target_type describes the category of targets affected or selected by this event.
+  // It helps the frontend render grouped targets without inferring intent only from symbols or positions.
+  optional string target_type = 6;
+
+  // symbols contains symbol IDs affected or selected by this event.
+  // Use it for symbol-scoped events; leave it empty when the event targets positions or another scope.
+  repeated uint32 symbols = 7;
 }
