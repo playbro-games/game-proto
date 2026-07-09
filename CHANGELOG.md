@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.2](https://github.com/playbro-games/game-proto/compare/v0.4.1...v0.4.2) (2026-07-09)
+
+
+### Bug Fixes
+
+* maxwin typo ([83fd816](https://github.com/playbro-games/game-proto/commit/83fd816cdb328f295c96184ccb5a0c0daae9166d))
+* maxwin typo ([e57963b](https://github.com/playbro-games/game-proto/commit/e57963b3e39fdaf867eb300cb2e9595e2f4baec5))
+
 ## [0.4.1](https://github.com/playbro-games/game-proto/compare/v0.4.0...v0.4.1) (2026-07-09)
 
 
