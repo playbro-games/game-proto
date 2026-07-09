@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package common.v1;
+
+import "common/v1/orthogonal_position.proto";
+
+// FeatureModifier describes a rule modifier selected or activated by a feature and kept in context while that feature is active.
+// Use it for state that changes how future wins or symbols are interpreted; one-time animations should still be represented as events.
+message FeatureModifier {
+  // type is a stable modifier identifier from the game rules.
+  // The frontend uses it to choose presentation and to interpret the meaning of value, symbols, and positions.
+  string type = 1;
+
+  // value is the numeric parameter of the modifier.
+  // Its meaning is defined by type: it can represent a multiplier, amount, count, level, or another configured numeric rule.
+  optional int64 value = 2;
+
+  // target_type describes the scope category affected by the modifier.
+  // It helps the frontend render grouped targets without inferring intent only from symbols or positions.
+  optional string target_type = 3;
+
+  // symbols contains symbol IDs affected by the modifier.
+  // Use it for symbol-scoped mechanics; leave it empty when the modifier targets positions, a global feature state, or another scope.
+  repeated uint32 symbols = 4;
+
+  // positions contains board cells affected by the modifier.
+  // Use it for position-scoped mechanics; leave it empty when the modifier targets symbols, a global feature state, or another scope.
+  repeated common.v1.OrthogonalPosition positions = 5;
+}

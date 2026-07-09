@@ -3,6 +3,7 @@ syntax = "proto3";
 package domain.v1;
 
 import "common/v1/event.proto";
+import "common/v1/feature_modifier.proto";
 import "common/v1/multiplier.proto";
 import "common/v1/windata.proto";
 import "domain/v1/cascade.proto";
@@ -56,4 +57,8 @@ message Freespins {
 
   // events contains all the information about the unique game events of a particular game that affect the user's gameplay.
   repeated common.v1.Event events = 12;
+
+  // feature_modifiers contains feature-level rules that remain active across the free spins session.
+  // Use this block when a feature selects or changes rules for future free spin wins, symbols, positions, or global feature state.
+  repeated common.v1.FeatureModifier feature_modifiers = 13;
 }
