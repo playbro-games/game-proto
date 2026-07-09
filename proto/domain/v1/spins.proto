@@ -4,6 +4,7 @@ package domain.v1;
 
 import "common/v1/multiplier.proto";
 import "common/v1/windata.proto";
+import "common/v1/max_win.proto";
 import "domain/v1/cascade.proto";
 import "domain/v1/screen_result.proto";
 
@@ -41,4 +42,7 @@ message Spins {
   // bet_per_line is the wager amount per payline.
   // Use it when payout rules are based on line-level betting.
   optional int64 bet_per_line = 8;
+
+  // Represents the event when the maximum win has been reached in the game.
+  optional common.v1.MaxWin max_win = 9;
 }
