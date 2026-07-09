@@ -1,5 +1,5 @@
 # Local
-.DS_Store
+**/.DS_Store
 *.local
 *.log*
 
@@ -18,3 +18,4 @@ dist.zip
 .env
 .env.dev
 .env.prod
+
