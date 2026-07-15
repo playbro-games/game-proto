@@ -28,6 +28,9 @@ enum EventType {
 
   // EVENT_TYPE_ANTICIPATION marks an anticipation event before a possible feature trigger.
   EVENT_TYPE_ANTICIPATION = 6;
+
+  // EVENT_TYPE_RANDOM_MULTIPLIER gives you a random multiplier that can be applied to any situation in the game.
+  EVENT_TYPE_RANDOM_MULTIPLIER = 7;
 }
 
 // An event is a structure of a game event.
