@@ -17,4 +17,7 @@ message StartRequest {
 
   // sign_key is a key used for signing requests, ensuring the integrity and authenticity of the requests.
   string sign_key = 4;
+
+  // mode specifies the mode of the game session, which can be used to determine the rules or settings for the session.
+  optional string mode = 5;
 }
