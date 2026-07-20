@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.3](https://github.com/playbro-games/game-proto/compare/v0.4.2...v0.4.3) (2026-07-20)
+
+
+### Bug Fixes
+
+* mode added for gift ([14b56ff](https://github.com/playbro-games/game-proto/commit/14b56ffcdb8de473e59b30989fb59e9fd7bd2c82))
+* mode added for gift ([e6fa062](https://github.com/playbro-games/game-proto/commit/e6fa0620872b7c058ca680915e874d797b67e9d9))
+
 ## [0.4.2](https://github.com/playbro-games/game-proto/compare/v0.4.1...v0.4.2) (2026-07-09)
 
 
