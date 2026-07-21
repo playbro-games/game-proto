@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.4](https://github.com/playbro-tech/game-proto/compare/v0.4.3...v0.4.4) (2026-07-21)
+
+
+### Bug Fixes
+
+* rename ([c57d7c6](https://github.com/playbro-tech/game-proto/commit/c57d7c6d9a86be6747535039924af710ac785334))
+* rename ([4e1342a](https://github.com/playbro-tech/game-proto/commit/4e1342acabbab9b05859867acb4105d0ce4d628e))
+
 ## [0.4.3](https://github.com/playbro-games/game-proto/compare/v0.4.2...v0.4.3) (2026-07-20)
 
 
