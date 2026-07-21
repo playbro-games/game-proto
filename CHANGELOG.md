@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.5](https://github.com/playbro-tech/game-proto/compare/v0.4.4...v0.4.5) (2026-07-21)
+
+
+### Bug Fixes
+
+* gift sync ([659ab00](https://github.com/playbro-tech/game-proto/commit/659ab0060d82883a90809ceec2d6f647dd1708ac))
+* gift sync ([8d3d68c](https://github.com/playbro-tech/game-proto/commit/8d3d68ca736719436a9a46e0b92e34916df29d0b))
+
 ## [0.4.4](https://github.com/playbro-tech/game-proto/compare/v0.4.3...v0.4.4) (2026-07-21)
 
 
